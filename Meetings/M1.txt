@@ -5,3 +5,14 @@ Main goals for the session:
 - Take the time to think about what our product backlog is going to look like
 - Agree a timeframe for each sprint (maybe different from Mon-Fri standard if timeframes show it's needed?)
 - Define a code of conduct
+
+Tasks:
+Define a Code of Conduct. See Unit 10a for assistance.
+Pick a Product Owner.
+Pick a Scrum Master.
+Create and prioritize a Product Backlog.
+Refine and estimate the Product Backlog.
+Schedule Sprint planning session.
+Schedule daily stand-up.
+Schedule Sprint review.
+Schedule Sprint retrospective.

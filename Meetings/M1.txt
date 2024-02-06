@@ -1,1 +1,7 @@
 
+Main goals for the session: 
+- Agree how and when we will meet throughout the week
+- Agree what we will use for Kanban board (projects?/Atlassian Jira?/Teams?/any others?)
+- Take the time to think about what our product backlog is going to look like
+- Agree a timeframe for each sprint (maybe different from Mon-Fri standard if timeframes show it's needed?)
+- Define a code of conduct

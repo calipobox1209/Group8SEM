@@ -1,0 +1,23 @@
+What has everyone done since the last stand-up?
+What are we going to do before the next stand-up?
+What is getting in our way?
+
+
+
+Scrum Process
+How do we run a Scrum team?
+
+Produce an initial product backlog.
+Prioritise the backlog.
+Do an initial estimate of the work.
+Decide on what work to do in the next Sprint - Sprint Planning.
+Every day have a daily stand-up - Daily Scrum.
+End of the Sprint, review - Sprint Review.
+Analyse how the team has worked and modify based on outcome of review: update estimates, add new tasks, learn lessons, etc. - Sprint Retrospective.
+Repeat 4-7 until product is delivered to the customer.
+
+Sprint Review:
+
+Is there anything we can do differently to speed things up?
+Can we offload some Backlog items (i.e. give them to other teams)?
+Can we not do some things (i.e. remove items from the backlog)?

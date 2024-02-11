@@ -22,8 +22,8 @@
 * Be mindful of your surroundings and your fellow participants. Alert team leaders if you notice a dangerous situation, 
   someone in distress, or violations of this Code of Conduct, even if they seem inconsequential.
 
-## **Unacceptable Behavior
-**
+## Unacceptable Behavior
+
 Unacceptable behaviors include: intimidating, harassing, abusive, discriminatory, derogatory, or demeaning speech or actions by any participant in our project and in one-on-one communications carried out in the context of this project. 
 
 ## **Conflict Resolution**

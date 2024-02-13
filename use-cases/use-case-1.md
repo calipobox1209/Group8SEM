@@ -1,4 +1,4 @@
-# USE CASE: Produce population reports of all countries by world, region, or continent.
+# USE CASE: 1 Produce population reports of all countries by world, region, or continent.
 
 ## CHARACTERISTIC INFORMATION
 

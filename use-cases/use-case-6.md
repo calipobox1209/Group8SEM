@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As an Employee I want to produce a report on the top N most populated capital cities for the world or any given region or continent so that I can support population reporting for the organisation.
+As an **Employee** **I want to produce a report on the top N most populated capital cities for the world or any given region or continent ** so that **I can support population reporting for the organisation.**
 
 ### Scope
 

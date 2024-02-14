@@ -1,14 +1,14 @@
-# USE CASE: 4 Produce a Report on the Salary of Employees of a Given Role
+# USE CASE: 6 Produce a Report on the most populated capital cities in the world, continent or region that is of variable length determined by user input
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an *HR advisor* I want *to produce a report on the salary of employees of a given role* so that *I can support financial reporting of the organisation.*
+As an Employee I want to produce a report on the top N most populated capital cities for the world or any given region or continent so that I can support population reporting for the organisation.
 
 ### Scope
 
-Company.
+Organisation.
 
 ### Level
 
@@ -16,11 +16,11 @@ Primary task.
 
 ### Preconditions
 
-We know the role.  Database contains current employee salary data.
+We know if the report is searching for the world, continent or region and we know the desired length .  Database contains the population counts of all cities in the world, with capital cities being discernible by specified metrics.
 
 ### Success End Condition
 
-A report is available for HR to provide to finance.
+A report is available for the employee to use in their work.
 
 ### Failed End Condition
 
@@ -28,23 +28,23 @@ No report is produced.
 
 ### Primary Actor
 
-HR Advisor.
+Employee.
 
 ### Trigger
 
-A request for finance information is sent to HR.
+A request by a client or senior member of staff to gather the statistics required in this report.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Finance request salary information for a given role.
-2. HR advisor captures name of the role to get salary information for.
-3. HR advisor extracts current salary information of all employees of the given role.
-4. HR advisor provides report to finance.
+1. Client requests the top 5 most populated capital cities of a given continent.
+2. Employee captures name of the desired continent to obtain capital city information.
+3. Employee extracts list of capital city information from the given continent.
+4. Employee provides report to client.
 
 ## EXTENSIONS
 
-3. **Role does not exist**:
-    1. HR advisor informs finance no role exists.
+3. **Correct capital cities are in the list but are not ordered correctly**:
+    1. Employee who reviews the report notifies IT of the issue.
 
 ## SUB-VARIATIONS
 
@@ -52,4 +52,4 @@ None.
 
 ## SCHEDULE
 
-**DUE DATE**: Release 1.0
+undetermined

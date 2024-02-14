@@ -5,7 +5,7 @@
 
 ### Goal in Context
 
-As an Employee I want to produce a report on the populations of any given continent, region or country that are living in cities and those that are not.
+As an **Employee** **I want to produce a report ** **on the populations of any given continent, region or country that are living in cities and those that are not** **so that ** **I am able to assist in the reporting on population figures**
 
 ### Scope
 

@@ -4,7 +4,7 @@
 
 ### Goal in context
 
-  As an **employee** I must be able to **produce a report that shows the total number of people in the world that speak Chinese, English, Hindi, Spanish and Arabic ** so that I can **support the reporting of language trends amongst the global population **
+  As an **employee** I must be able to **produce a report that shows the total number of people in the world that speak Chinese, English, Hindi, Spanish and Arabic** so that I can **support the reporting of language trends amongst the global population**
 
 ### Scope
 

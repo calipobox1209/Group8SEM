@@ -1,4 +1,4 @@
-# USE CASE: 2 Generate reports of the top populated countries in a continent, region, or the world. The lenght of the list is up to the user.
+# USE CASE: 2 Generate reports of the top populated countries in a continent, region, or the world. The length of the list is up to the user.
 
 ## CHARACTERISTIC INFORMATION
 

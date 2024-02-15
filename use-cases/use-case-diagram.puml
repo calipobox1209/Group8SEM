@@ -1,0 +1,33 @@
+@startuml
+actor A1 as "Employee"
+
+rectangle Database
+rectangle Application {
+usecase UC1 as "Produce population reports of all countries by world, region, or continent."
+usecase UC2 as "Generate reports of the top populated countries in a continent, region, or the world. The length of the list is up to the user."
+usecase UC3 as "Generate list of cities from largest to smallest population a specific district, country, region, continent, or in the entire world."
+usecase UC4 as "Generate list, of user determined length, of most populated cities in any district, country, region, continent, or in the whole world."
+usecase UC5 as "Generate list of all capital cities in a region, continent, or the whole world organized by highest to lowest population."
+usecase UC6 as "Produce a Report on the most populated capital cities in the world, continent or region that is of variable length determined by user input"
+usecase UC7 as "Produce a Report on the populations of any given continent, region or country that are living in cities and those that are not."
+usecase UC8 as "Generate report showing the population of people in the world that speak Chinese, English, Hindi, Spanish and Arabic alongside their percentage contribution to the world population."
+}
+
+A1 --> UC1
+A1 --> UC2
+A1 --> UC3
+A1 --> UC4
+A1 --> UC5
+A1 --> UC6
+A1 --> UC7
+A1 --> UC8
+
+UC1 --> Database
+UC2 --> Database
+UC3 --> Database
+UC4 --> Database
+UC5 --> Database
+UC6 --> Database
+UC7 --> Database
+UC8 --> Database
+@enduml

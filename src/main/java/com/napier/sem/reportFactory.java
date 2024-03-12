@@ -1,5 +1,5 @@
 package com.napier.sem;
-//this class contains function calls and objects that have not been built yet instances of this have been commented out
+//class contains function calls and objects that have not been built yet instances of this have been commented out
 
 public class reportFactory {
 

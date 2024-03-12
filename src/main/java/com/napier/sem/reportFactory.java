@@ -1,4 +1,5 @@
 package com.napier.sem;
+//this class contains function calls and objects that have not been built yet instances of this have been commented out
 
 public class reportFactory {
 
@@ -17,7 +18,7 @@ public class reportFactory {
                 //return countryReport.reportNCountryByArea(n,a)
                 break;
             case 3:
-                //return countryReport.SingleCountryPop(a)
+                //return countryReport.singleCountryPop(a)
                 break;
         }
     }
@@ -26,10 +27,13 @@ public class reportFactory {
     {
         switch (query) {
             case 1:
+                //return cityReport.reportAllCitiesByArea(a)
                 break;
             case 2:
+                //return cityReport.reportNCitiesByArea(a,n)
                 break;
             case 3:
+                //return cityReport.singleCityPop(a)
                 break;
         }
     }

@@ -2,25 +2,28 @@ package com.napier.sem;
 
 public class reportFactory {
 
+    //Country countryReport = new Country;
+    //City cityReport = new City;
+
     //these functions will eventually have the return type of ArrayList(country/city)
-    public void countryReportMaker(int q, int n, String a)
+    public void countryReportMaker(int query, int n, String a)
     {
-        int query = q;
         switch (query) {
 
             case 1:
-                System.out.println("test");
+                //return countryReport.reportAllCountryByArea(a)
                 break;
             case 2:
+                //return countryReport.reportNCountryByArea(n,a)
                 break;
             case 3:
+                //return countryReport.SingleCountryPop(a)
                 break;
         }
     }
 
-    public void cityReportMaker(int q, int n, String a)
+    public void cityReportMaker(int query, int n, String a)
     {
-        int query = q;
         switch (query) {
             case 1:
                 break;

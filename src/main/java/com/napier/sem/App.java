@@ -1,5 +1,5 @@
 package com.napier.sem;
-
+import java.util.Scanner;
 import java.sql.*;
 
 public class App
@@ -68,20 +68,74 @@ public class App
             }
         }
     }
-
     public static void main(String[] args)
     {
-        // Create new Application
-        App a = new App();
+        App app = new App();
 
         // Connect to database
-        a.connect();
-        
-        //
-        //add main program stuff here
-        //
+        app.connect();
 
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+
+        while (running) {
+            System.out.println("Select an option:");
+            System.out.println("1 - Generate country report");
+            System.out.println("2 - Generate city report");
+            System.out.println("3 - Generate capital city report");
+            System.out.println("0 - Exit");
+
+            System.out.print("Enter your choice: ");
+            // Adding nextLine() to consume the rest of the line after the nextInt()
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    // Implement the logic or call a method to generate and display a country report
+                    app.generateCountryReport();
+                    break;
+                case 2:
+                    // Implement the logic or call a method to generate and display a city report
+                    app.generateCityReport();
+                    break;
+                case 3:
+                    // Implement the logic or call a method to generate and display a capital city report
+                    app.generateCapitalCityReport();
+                    break;
+                // Add more cases for additional reports
+                case 0:
+                    running = false;
+                    System.out.println("Exiting the program. Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid option, please try again.");
+            }
+        }
+
+        scanner.close();
         // Disconnect from database
-        a.disconnect();
+        app.disconnect();
+    }
+
+    // Placeholder methods for the report generation functionalities
+    private void generateCountryReport() {
+        // Logic to generate and display country report
+        System.out.println("Country report generated.");
+    }
+
+    private void generateCityReport() {
+        // Logic to generate and display city report
+        System.out.println("City report generated.");
+    }
+
+    private void generateCapitalCityReport() {
+        // Logic to generate and display capital city report
+        System.out.println("Capital city report generated.");
     }
 }
+
+
+
+
+

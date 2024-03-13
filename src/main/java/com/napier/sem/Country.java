@@ -5,18 +5,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Country {
-        String code;
-        String name;
-        String continent;
-        String region;
-        String population;
-        String capital;
+    String code;
+    String name;
+    String continent;
+    String region;
+    String population;
+    String capital;
+    ConnectionProvider a = new ConnectionProvider();
 
 
 
-        public ArrayList<Country> reportAllCountriesByArea(String area){
+       public ArrayList<Country> reportAllCountriesByArea(String area){
                 try {
-                    Statement stmt = con.createStatement();
+                    Statement stmt = a.con.createStatement();
                     String select = "";
                     ResultSet rset = stmt.executeQuery(select);
 
@@ -45,7 +46,7 @@ public class Country {
         public ArrayList<Country> reportNCountriesByArea(String area, int N){
 
             try {
-                Statement stmt = con.createStatement();
+                Statement stmt = a.con.createStatement();
                 String select = "";
                 ResultSet rset = stmt.executeQuery(select);
 
@@ -68,12 +69,6 @@ public class Country {
                 System.out.println("Failed to get country details");
                 return null;
             }
-        }
-
-
-        public Country singleCountryPop(String area){
-
-            return null;
         }
 
 }

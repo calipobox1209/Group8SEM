@@ -1,5 +1,6 @@
 package com.napier.sem;
 
+
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -10,11 +11,16 @@ public class City {
     String district;
     String population;
 
+    ConnectionProvider a = new ConnectionProvider();
 
 
-    public ArrayList<City> reportAllCitiesByArea(String area){
+
+
+
+
+     public ArrayList<City> reportAllCitiesByArea(String area){
         try {
-            Statement stmt = con.createStatement();
+            Statement stmt = a.con.createStatement();
             String select = "";
             ResultSet rset = stmt.executeQuery(select);
 
@@ -41,9 +47,9 @@ public class City {
 
     public ArrayList<City> reportNCitiesByArea(String area, int N){
         try {
-            Statement Nstmt = con.createStatement();
+            Statement stmt = a.con.createStatement();
             String select = "";
-            ResultSet rset = Nstmt.executeQuery(select);
+            ResultSet rset = stmt.executeQuery(select);
 
             ArrayList<City> topNcities = new ArrayList<City>();
             while (rset.next()) {
@@ -62,12 +68,6 @@ public class City {
             System.out.println("Failed to get city details");
             return null;
         }
-        return null;
-    }
 
-
-    public City singleCityPop(String area){
-
-        return null;
     }
 }

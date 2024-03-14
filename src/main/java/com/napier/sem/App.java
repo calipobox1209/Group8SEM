@@ -6,68 +6,10 @@ import java.util.Scanner;
 
 public class App
 {
-    static Country country = new Country();
+    static reportFactory factory =  new reportFactory();
+    Country country = new Country();
     City city = new City();
-  /*  private static String CountryAreaChecker(int choice) {
 
-        Scanner scanner = new Scanner(System.in);
-        String area;
-        switch (choice) {
-            case 1:
-                System.out.println("Please enter your desired region");
-                area = scanner.nextLine();
-                country.reportAllCountriesByArea(area);
-                break;
-
-            case 2:
-                System.out.println("Please enter your desired continent");
-                area = scanner.nextLine();
-                country.reportAllCountriesByArea(area);
-                break;
-
-            default:
-                System.out.println("Invalid option, please try again.");
-
-        }
-    }
-
-    private static ArrayList<Country> NareaChecker(int choice, int N) {
-        Scanner scannerN = new Scanner(System.in);
-        String area;
-        switch (choice) {
-            case 1:
-                System.out.println("Please enter your desired region");
-                area = scannerN.nextLine();
-                countries = country.reportNCountriesByArea(area, N);
-                break;
-
-            case 2:
-                System.out.println("Please enter your desired continent");
-                area = scannerN.nextLine();
-                countries = country.reportNCountriesByArea(area, N);
-                break;
-
-            default:
-                System.out.println("Invalid option, please try again.");
-
-        }
-        return countries;
-    }
-*/
-    private void generateCountryReport() {
-        // Logic to generate and display country report
-        System.out.println("Country report generated.");
-    }
-
-    private void generateCityReport() {
-        // Logic to generate and display city report
-        System.out.println("City report generated.");
-    }
-
-    private void generateCapitalCityReport() {
-        // Logic to generate and display capital city report
-        System.out.println("Capital city report generated.");
-    }
     /**
      * Connection to MySQL database.
      */
@@ -142,6 +84,8 @@ public class App
         // Connect to database
         a.connect();
         Scanner scanner = new Scanner(System.in);
+        Scanner scanner1 = new Scanner(System.in);
+
         boolean running = true;
 
         while (running) {
@@ -155,8 +99,9 @@ public class App
             // Adding nextLine() to consume the rest of the line after the nextInt()
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
-
+            // This switch is reponsible for determining which type of report to create i.e Country or City
             switch (choice) {
+                // This case is for Countries
                 case 1:
                     // Implement the logic or call a method to generate and display a country report
                     int choice1;
@@ -166,57 +111,70 @@ public class App
                     System.out.println("3 - Generate single country report");
 
                     choice1 = scanner.nextInt();
-
+                    // This switch is responsible for handling which kind of country report to generate
                     switch(choice1) {
-
+                        // case for N countries
                         case 1:
-                        break;
-
+                            System.out.println("Please enter the area you wish to generate a report for:");
+                            System.out.println("1 - Region");
+                            System.out.println("2 - Continent");
+                            System.out.println("3 - World");
+                            break;
+                        // case for ALL countries
                         case 2:
                             int choice3;
                             System.out.println("Please enter the area you wish to generate a report for:");
-                            System.out.println("Invalid option, please try again.");
                             System.out.println("1 - Region");
                             System.out.println("2 - Continent");
                             System.out.println("3 - World");
 
                             choice3 = scanner.nextInt();
+                            // This switch then determines which information to send to the factory class alongside
                             switch(choice3){
-
+                                // Gets user input as to the name of the requested region and sends it alongside 'Region' to the factory
                                 case 1:
+                                    System.out.println("Please enter the name of the region");
+                                    area = scanner1.nextLine();
+                                    factory.countryReportMaker(1, 0, "Region");
+
                                 break;
 
                                 case 2:
+                                    // Gets user input as to the name of the requested continent and sends it alongside 'Continent' to the factory
+                                    System.out.println("Please enter the name of the continent");
+                                    area = scanner1.nextLine();
+                                    factory.countryReportMaker(1, 0, "Continent");
                                 break;
 
                                 case 3:
+                                    // Sends "World" as input to the factory class to print ALL countries of the world
+                                    factory.countryReportMaker(1, 0, "World");
                                 break;
                             }
-
-
-
-
                         break;
-
+                        // Case for single country
                         case 3:
-                        break;
+                            System.out.println("Please enter the area you wish to generate a report for:");
+                            System.out.println("1 - Region");
+                            System.out.println("2 - Continent");
+                            System.out.println("3 - World");
+                            break;
+
 
                         default:
                             System.out.println("Invalid option, please try again.");
 
                     }
-
-
                     break;
 
 
                 case 2:
                     // Implement the logic or call a method to generate and display a city report
-                    a.generateCityReport();
+
                     break;
                 case 3:
                     // Implement the logic or call a method to generate and display a capital city report
-                    a.generateCapitalCityReport();
+
                     break;
                 // Add more cases for additional reports
                 case 0:

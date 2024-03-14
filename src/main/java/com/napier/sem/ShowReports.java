@@ -1,10 +1,11 @@
 package com.napier.sem;
-
+//this class makes it possible to output the contents of our arrays to the console in the correct format for our reports
 import java.util.ArrayList;
 
 public class ShowReports {
+    //we differentiate between countries and cities because different object types and different report format
     public void showCountries(ArrayList<Country> c){
-
+        //goes through entire arraylist and outputs code,name,continent,region,population,and capital 
         for(int i = 0; i < c.size(); i++ )
         {
             System.out.println(
@@ -17,7 +18,7 @@ public class ShowReports {
         }
     }
     public void showCities(ArrayList<City> ci){
-
+        //goes through entire arraylist and outputs name,country,district,and population
         for(int i = 0; i < ci.size(); i++ )
         {
             System.out.println(

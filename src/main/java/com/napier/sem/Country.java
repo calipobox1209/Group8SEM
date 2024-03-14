@@ -16,7 +16,10 @@ public class Country {
        public ArrayList<Country> reportAllCountriesByArea(String area, String areaName){
                 try {
                     Statement stmt = a.con.createStatement();
-                    String select = "";
+                    String select = "SELECT Code, Name, Continent, Region, Population, Capital " +
+                            "FROM country " +
+                            "WHERE " + area + " = " + "'" + areaName + "' " +
+                            "ORDER BY Population DESC ";
                     ResultSet rset = stmt.executeQuery(select);
 
                     ArrayList<Country> countries = new ArrayList<Country>();
@@ -26,7 +29,7 @@ public class Country {
                         country.name = rset.getString("country.Name");
                         country.continent = rset.getString("country.Continent");
                         country.region = rset.getString("country.Region");
-                        country.population = rset.getString("city.Population");
+                        country.population = rset.getString("country.Population");
                         countries.add(country);
                     }
                     return countries;

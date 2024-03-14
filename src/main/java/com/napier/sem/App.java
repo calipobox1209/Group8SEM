@@ -12,7 +12,7 @@ public class App
 
     public void showCountries(ArrayList<Country> c){
 
-        for(int i = 0; i < c.size() + 1; i++ )
+        for(int i = 1; i < c.size() + 1; i++ )
         {
             System.out.println(
                     c.get(i).code + " "
@@ -179,6 +179,9 @@ public class App
                     System.out.println("Invalid option, please try again.");
             }
         }
+
+        App show = new App();
+        show.showCountries(Countries);
 
         scanner.close();
         // Disconnect from database

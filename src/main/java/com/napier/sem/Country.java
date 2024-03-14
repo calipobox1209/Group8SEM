@@ -15,7 +15,7 @@ public class Country {
 
 
 
-       public ArrayList<Country> reportAllCountriesByArea(String area){
+       public ArrayList<Country> reportAllCountriesByArea(String area, String areaName){
                 try {
                     Statement stmt = a.con.createStatement();
                     String select = "";
@@ -43,7 +43,7 @@ public class Country {
         }
 
 
-        public ArrayList<Country> reportNCountriesByArea(String area, int N){
+        public ArrayList<Country> reportNCountriesByArea(String area, String areaName, int N){
 
             try {
                 Statement stmt = a.con.createStatement();
@@ -69,6 +69,33 @@ public class Country {
                 System.out.println("Failed to get country details");
                 return null;
             }
+        }
+
+        public ArrayList<Country> reportSingleCountry(String areaName){
+           try {
+               Statement stmt = a.con.createStatement();
+               String select = "";
+               ResultSet rset = stmt.executeQuery(select);
+
+               ArrayList<Country> countries = new ArrayList<Country>();
+               while (rset.next()) {
+                   Country country = new Country();
+                   country.code = rset.getString("country.Code");
+                   country.name = rset.getString("country.Name");
+                   country.continent = rset.getString("country.Continent");
+                   country.region = rset.getString("country.Region");
+                   country.population = rset.getString("city.Population");
+                   countries.add(country);
+               }
+               return countries;
+           }
+
+           catch (Exception e)
+           {
+               System.out.println(e.getMessage());
+               System.out.println("Failed to get country details");
+               return null;
+           }
         }
 
 }

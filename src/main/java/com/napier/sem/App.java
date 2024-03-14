@@ -10,77 +10,16 @@ public class App
     Country country = new Country();
     City city = new City();
 
-    /**
-     * Connection to MySQL database.
-     */
-    public Connection con = null;
-
-    /**
-     * Connect to the MySQL database.
-     */
-    public void connect()
-    {
-        try
-        {
-            // Load Database driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            System.out.println("Could not load SQL driver");
-            System.exit(-1);
-        }
-
-        int retries = 10;
-        for (int i = 0; i < retries; ++i)
-        {
-            System.out.println("Connecting to database...");
-            try
-            {
-                // Wait a bit for db to start
-                Thread.sleep(30000);
-                // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
-                System.out.println("Successfully connected");
-                break;
-            }
-            catch (SQLException e)
-            {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
-                System.out.println(e.getMessage());
-            }
-            catch (InterruptedException ie)
-            {
-                System.out.println("Thread interrupted? Should not happen.");
-            }
-        }
-    }
-
-    /**
-     * Disconnect from the MySQL database.
-     */
-    public void disconnect()
-    {
-        if (con != null)
-        {
-            try
-            {
-                // Close connection
-                con.close();
-            }
-            catch (Exception e)
-            {
-                System.out.println("Error closing connection to database");
-            }
-        }
-    }
-
     public static void main(String[] args)
     {
         // Create new Application
-        App a = new App();
+        ConnectionProvider a = new ConnectionProvider();
 
         String area;
+        int query;
+        int n;
+        ArrayList<Country> Countries = new ArrayList<>();
+
         // Connect to database
         a.connect();
         Scanner scanner = new Scanner(System.in);
@@ -89,6 +28,7 @@ public class App
         boolean running = true;
 
         while (running) {
+
             System.out.println("Select an option:");
             System.out.println("1 - Generate country report");
             System.out.println("2 - Generate city report");
@@ -99,7 +39,7 @@ public class App
             // Adding nextLine() to consume the rest of the line after the nextInt()
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
-            // This switch is reponsible for determining which type of report to create i.e Country or City
+            // This switch is responsible for determining which type of report to create i.e Country or City
             switch (choice) {
                 // This case is for Countries
                 case 1:
@@ -115,10 +55,44 @@ public class App
                     switch(choice1) {
                         // case for N countries
                         case 1:
-                            System.out.println("Please enter the area you wish to generate a report for:");
+                            int choice2;
+                            System.out.println("Please enter the area you wish to generate a report for: ");
                             System.out.println("1 - Region");
                             System.out.println("2 - Continent");
                             System.out.println("3 - World");
+
+                            choice2 = scanner.nextInt();
+
+                            switch(choice2){
+                                case 1:
+                                    System.out.println("Please enter the name of the region");
+                                    area = scanner1.nextLine();
+                                    System.out.println("Please enter the number of countries in the report: ");
+                                    n = scanner1.nextInt();
+                                    Countries = factory.countryReportMaker(2, n, "Region", area);
+                                    running = false;
+
+                                break;
+
+                                case 2:
+                                    System.out.println("Please enter the name of the Continent");
+                                    area = scanner1.nextLine();
+                                    System.out.println("Please enter the number of countries in the report: ");
+                                    n = scanner1.nextInt();
+                                    Countries = factory.countryReportMaker(2, n, "Continent", area);
+                                    running = false;
+
+                                break;
+
+                                case 3:
+                                    System.out.println("Please enter the number of countries in the report: ");
+                                    n = scanner1.nextInt();
+                                    Countries = factory.countryReportMaker(2, n, "World", "Placeholder");
+                                    running = false;
+
+                                break;
+
+                            }
                             break;
                         // case for ALL countries
                         case 2:
@@ -135,7 +109,8 @@ public class App
                                 case 1:
                                     System.out.println("Please enter the name of the region");
                                     area = scanner1.nextLine();
-                                    factory.countryReportMaker(1, 0, "Region");
+                                    factory.countryReportMaker(1, 0, "Region", area);
+                                    running = false;
 
                                 break;
 
@@ -143,21 +118,24 @@ public class App
                                     // Gets user input as to the name of the requested continent and sends it alongside 'Continent' to the factory
                                     System.out.println("Please enter the name of the continent");
                                     area = scanner1.nextLine();
-                                    factory.countryReportMaker(1, 0, "Continent");
+                                    factory.countryReportMaker(1, 0, "Continent",area);
+                                    running = false;
                                 break;
 
                                 case 3:
                                     // Sends "World" as input to the factory class to print ALL countries of the world
-                                    factory.countryReportMaker(1, 0, "World");
+                                    factory.countryReportMaker(1, 0, "World","placeholder");
+                                    running = false;
                                 break;
                             }
                         break;
                         // Case for single country
                         case 3:
-                            System.out.println("Please enter the area you wish to generate a report for:");
-                            System.out.println("1 - Region");
-                            System.out.println("2 - Continent");
-                            System.out.println("3 - World");
+                            System.out.println("Please enter the country you wish to generate a report for: ");
+                            area = scanner1.nextLine();
+                            factory.countryReportMaker(3, 0, "Placeholder", area);
+                            running = false;
+
                             break;
 
 

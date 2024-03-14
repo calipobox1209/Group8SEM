@@ -12,7 +12,7 @@ public class City {
 
     ConnectionProvider a = ConnectionProvider.getInstance();
 
-    public ArrayList<City> reportAllCitiesByArea(String countryName){
+    public ArrayList<City> reportAllCitiesByArea(String countryName) {
         try {
             Statement stmt = a.con.createStatement();
             // SQL query to select all cities in a specific country
@@ -32,8 +32,7 @@ public class City {
                 cities.add(city);
             }
             return cities;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
             return null;
@@ -41,7 +40,7 @@ public class City {
     }
 
 
-    public ArrayList<City> reportNCitiesByArea(String countryName, int N){
+    public ArrayList<City> reportNCitiesByArea(String countryName, int N) {
         try {
             Statement stmt = a.con.createStatement();
             // SQL query to select top N cities in a specific country ordered by population
@@ -61,11 +60,11 @@ public class City {
                 topNcities.add(Ncity);
             }
             return topNcities;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
             return null;
         }
     }
+}
 

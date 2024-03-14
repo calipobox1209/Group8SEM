@@ -1,10 +1,9 @@
 package com.napier.sem;
 //class contains function calls and objects that have not been built yet instances of this have been commented out
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class reportFactory {
+public class ReportFactory {
 
     Country countryReport = new Country();
     City cityReport = new City();
@@ -46,10 +45,20 @@ public class reportFactory {
     {
         switch (query) {
             case 1:
-                cities = cityReport.reportAllCitiesByArea(a,b);
+                if (a == "World")
+                {
+                    cities = cityReport.reportAllCitiesByWorld();
+                }else {
+                    cities = cityReport.reportAllCitiesByArea(a, b);
+                }
                 break;
             case 2:
-                cities = cityReport.reportNCitiesByArea(a,b,n);
+                if (a == "World")
+                {
+                    cities = cityReport.reportNCitiesByWorld(n);
+                }else {
+                    cities = cityReport.reportNCitiesByArea(a, b, n);
+                }
                 break;
             case 3:
                 cities = cityReport.reportSingleCity(b);

@@ -1,12 +1,10 @@
 package com.napier.sem;
 
-import java.sql.*;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class App {
-    static reportFactory factory = new reportFactory();
+    static ReportFactory factory = new ReportFactory();
     Country country = new Country();
     City city = new City();
 
@@ -184,9 +182,9 @@ public class App {
                                     case 1:
                                         System.out.println("Please enter the name of the region");
                                         area = scanner1.nextLine();
-                                        System.out.println("Please enter the number of countries in the report: ");
+                                        System.out.println("Please enter the number of cities in the report: ");
                                         n = scanner1.nextInt();
-                                        Cities = factory.cityReportMaker(2, n, "Region", area);
+                                        Cities = factory.cityReportMaker(2, n, "country.Region", area);
                                         show.showCities(Cities);
 
                                         running = false;
@@ -196,9 +194,9 @@ public class App {
                                     case 2:
                                         System.out.println("Please enter the name of the Continent");
                                         area = scanner1.nextLine();
-                                        System.out.println("Please enter the number of countries in the report: ");
+                                        System.out.println("Please enter the number of cities in the report: ");
                                         n = scanner1.nextInt();
-                                        Cities = factory.cityReportMaker(2, n, "Continent", area);
+                                        Cities = factory.cityReportMaker(2, n, "country.Continent", area);
                                         show.showCities(Cities);
 
                                         running = false;
@@ -206,7 +204,7 @@ public class App {
                                         break;
 
                                     case 3:
-                                        System.out.println("Please enter the number of countries in the report: ");
+                                        System.out.println("Please enter the number of cities in the report: ");
                                         n = scanner1.nextInt();
                                         Cities = factory.cityReportMaker(2, n, "World", "World");
                                         show.showCities(Cities);
@@ -218,9 +216,9 @@ public class App {
                                     case 4:
                                         System.out.println("Please enter the name of the Country");
                                         area = scanner1.nextLine();
-                                        System.out.println("Please enter the number of countries in the report: ");
+                                        System.out.println("Please enter the number of cities in the report: ");
                                         n = scanner1.nextInt();
-                                        Cities = factory.cityReportMaker(2, n, "Country", area);
+                                        Cities = factory.cityReportMaker(2, n, "country.Name", area);
                                         show.showCities(Cities);
 
                                         running = false;
@@ -230,7 +228,7 @@ public class App {
                                     case 5:
                                         System.out.println("Please enter the name of the District");
                                         area = scanner1.nextLine();
-                                        System.out.println("Please enter the number of countries in the report: ");
+                                        System.out.println("Please enter the number of cities in the report: ");
                                         n = scanner1.nextInt();
                                         Cities = factory.cityReportMaker(2, n, "District", area);
                                         show.showCities(Cities);
@@ -240,6 +238,7 @@ public class App {
                                         break;
 
                                 }
+                            break;
 
                             case 2:
                                 int choice6;
@@ -256,7 +255,7 @@ public class App {
                                         case 1:
                                             System.out.println("Please enter the name of the region");
                                             area = scanner1.nextLine();
-                                            Cities = factory.cityReportMaker(1, 0, "Region", area);
+                                            Cities = factory.cityReportMaker(1, 0, "country.Region", area);
                                             show.showCities(Cities);
 
                                             running = false;
@@ -266,7 +265,7 @@ public class App {
                                         case 2:
                                             System.out.println("Please enter the name of the continent");
                                             area = scanner1.nextLine();
-                                            Cities = factory.cityReportMaker(1, 0, "Continent", area);
+                                            Cities = factory.cityReportMaker(1, 0, "country.Continent", area);
                                             show.showCities(Cities);
 
                                             running = false;
@@ -284,7 +283,7 @@ public class App {
                                         case 4:
                                             System.out.println("Please enter the name of the country");
                                             area = scanner1.nextLine();
-                                            Cities = factory.cityReportMaker(1, 0, "country", area);
+                                            Cities = factory.cityReportMaker(1, 0, "country.Name", area);
                                             show.showCities(Cities);
 
                                             running = false;
@@ -302,7 +301,7 @@ public class App {
                                             break;
 
                                     }
-
+                                break;
                             case 3:
                                 System.out.println("Please enter the city you wish to generate a report for: ");
                                 area = scanner1.nextLine();

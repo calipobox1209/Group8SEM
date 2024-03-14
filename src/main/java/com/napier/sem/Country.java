@@ -13,14 +13,10 @@ public class Country {
     String capital;
     ConnectionProvider a = ConnectionProvider.getInstance();
 
-
        public ArrayList<Country> reportAllCountriesByArea(String area, String areaName){
                 try {
                     Statement stmt = a.con.createStatement();
-                    String select = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, country.Capital "
-                            + "FROM country "
-                            + "WHERE " + area + " = " + "'" + areaName + "' "
-                            + "ORDER BY Population DESC " ;
+                    String select = "";
                     ResultSet rset = stmt.executeQuery(select);
 
                     ArrayList<Country> countries = new ArrayList<Country>();
@@ -30,7 +26,7 @@ public class Country {
                         country.name = rset.getString("country.Name");
                         country.continent = rset.getString("country.Continent");
                         country.region = rset.getString("country.Region");
-                        country.population = rset.getString("country.Population");
+                        country.population = rset.getString("city.Population");
                         countries.add(country);
                     }
                     return countries;
@@ -49,56 +45,60 @@ public class Country {
 
             try {
                 Statement stmt = a.con.createStatement();
-                String select = "";
+                String select = "SELECT Code, Name, Continent, Region, Population " +
+                        "FROM country " +
+                        "WHERE " + area + " = '" + areaName + "' " +
+                        "ORDER BY Population DESC LIMIT " + N;
+
                 ResultSet rset = stmt.executeQuery(select);
 
                 ArrayList<Country> countries = new ArrayList<Country>();
                 while (rset.next()) {
                     Country country = new Country();
-                    country.code = rset.getString("country.Code");
-                    country.name = rset.getString("country.Name");
-                    country.continent = rset.getString("country.Continent");
-                    country.region = rset.getString("country.Region");
-                    country.population = rset.getString("country.Population");
+                    country.code = rset.getString("Code");
+                    country.name = rset.getString("Name");
+                    country.continent = rset.getString("Continent");
+                    country.region = rset.getString("Region");
+                    country.population = rset.getString("Population");
                     countries.add(country);
                 }
                 return countries;
             }
-
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 System.out.println(e.getMessage());
                 System.out.println("Failed to get country details");
                 return null;
             }
         }
 
-        public ArrayList<Country> reportSingleCountry(String areaName){
-           try {
-               Statement stmt = a.con.createStatement();
-               String select = "";
-               ResultSet rset = stmt.executeQuery(select);
+    public ArrayList<Country> reportSingleCountry(String countryName){
+        try {
+            Statement stmt = a.con.createStatement();
+            // SQL query to select a single country by its name
+            String select = "SELECT Code, Name, Continent, Region, Population " +
+                    "FROM country " +
+                    "WHERE Name = '" + countryName + "'";
 
-               ArrayList<Country> countries = new ArrayList<Country>();
-               while (rset.next()) {
-                   Country country = new Country();
-                   country.code = rset.getString("country.Code");
-                   country.name = rset.getString("country.Name");
-                   country.continent = rset.getString("country.Continent");
-                   country.region = rset.getString("country.Region");
-                   country.population = rset.getString("country.Population");
-                   countries.add(country);
-               }
-               return countries;
-           }
+            ResultSet rset = stmt.executeQuery(select);
 
-           catch (Exception e)
-           {
-               System.out.println(e.getMessage());
-               System.out.println("Failed to get country details");
-               return null;
-           }
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next()) {
+                Country country = new Country();
+                country.code = rset.getString("Code");
+                country.name = rset.getString("Name");
+                country.continent = rset.getString("Continent");
+                country.region = rset.getString("Region");
+                country.population = rset.getString("Population");
+                countries.add(country);
+            }
+            return countries;
         }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
 
 }
 

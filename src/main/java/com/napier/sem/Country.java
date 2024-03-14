@@ -13,10 +13,14 @@ public class Country {
     String capital;
     ConnectionProvider a = ConnectionProvider.getInstance();
 
+
        public ArrayList<Country> reportAllCountriesByArea(String area, String areaName){
                 try {
                     Statement stmt = a.con.createStatement();
-                    String select = "";
+                    String select = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, country.Capital "
+                            + "FROM country "
+                            + "WHERE " + area + " = " + "'" + areaName + "' "
+                            + "ORDER BY Population DESC " ;
                     ResultSet rset = stmt.executeQuery(select);
 
                     ArrayList<Country> countries = new ArrayList<Country>();
@@ -26,7 +30,7 @@ public class Country {
                         country.name = rset.getString("country.Name");
                         country.continent = rset.getString("country.Continent");
                         country.region = rset.getString("country.Region");
-                        country.population = rset.getString("city.Population");
+                        country.population = rset.getString("country.Population");
                         countries.add(country);
                     }
                     return countries;
@@ -55,7 +59,7 @@ public class Country {
                     country.name = rset.getString("country.Name");
                     country.continent = rset.getString("country.Continent");
                     country.region = rset.getString("country.Region");
-                    country.population = rset.getString("city.Population");
+                    country.population = rset.getString("country.Population");
                     countries.add(country);
                 }
                 return countries;
@@ -82,7 +86,7 @@ public class Country {
                    country.name = rset.getString("country.Name");
                    country.continent = rset.getString("country.Continent");
                    country.region = rset.getString("country.Region");
-                   country.population = rset.getString("city.Population");
+                   country.population = rset.getString("country.Population");
                    countries.add(country);
                }
                return countries;

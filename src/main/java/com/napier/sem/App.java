@@ -10,6 +10,20 @@ public class App
     Country country = new Country();
     City city = new City();
 
+    public void showCountries(ArrayList<Country> c){
+
+        for(int i = 0; i < c.size() + 1; i++ )
+        {
+            System.out.println(
+                    c.get(i).code + " "
+                    + c.get(i).name + " "
+                    + c.get(i).continent + " "
+                    + c.get(i).region + " "
+                    + c.get(i).population + " "
+                    + c.get(i).capital + "\n" );
+        }
+    }
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -24,6 +38,8 @@ public class App
         a.connect();
         Scanner scanner = new Scanner(System.in);
         Scanner scanner1 = new Scanner(System.in);
+
+
 
         boolean running = true;
 

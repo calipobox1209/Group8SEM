@@ -13,7 +13,7 @@ public class City {
 
     ConnectionProvider a = ConnectionProvider.getInstance();
 
-     public ArrayList<City> reportAllCitiesByArea(String area){
+     public ArrayList<City> reportAllCitiesByArea(String area, String areaname){
         try {
             Statement stmt = a.con.createStatement();
             String select = "";
@@ -40,7 +40,7 @@ public class City {
 
     }
 
-    public ArrayList<City> reportNCitiesByArea(String area, int N){
+    public ArrayList<City> reportNCitiesByArea(String area, String areaName, int N){
         try {
             Statement stmt = a.con.createStatement();
             String select = "";
@@ -55,6 +55,32 @@ public class City {
                 topNcities.add(Ncity);
             }
             return topNcities;
+        }
+
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+
+    }
+
+    public ArrayList<City> reportSingleCity(String areaName){
+        try {
+            Statement stmt = a.con.createStatement();
+            String select = "";
+            ResultSet rset = stmt.executeQuery(select);
+
+            ArrayList<City> singlecity = new ArrayList<City>();
+            while (rset.next()) {
+                City Ncity = new City();
+                Ncity.name = rset.getString("city.Name");
+                Ncity.district = rset.getString("city.District");
+                Ncity.population = rset.getString("city.Population");
+                singlecity.add(Ncity);
+            }
+            return singlecity;
         }
 
         catch (Exception e)

@@ -1,7 +1,10 @@
 package com.napier.sem;
 
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
+
 
 public class App {
     static ReportFactory factory = new ReportFactory();
@@ -9,8 +12,12 @@ public class App {
     City city = new City();
 
 
+
     public static void main(String[] args) {
         ShowReports show = new ShowReports();
+
+
+
         // Create new Application
         ConnectionProvider a = ConnectionProvider.getInstance();
 
@@ -189,6 +196,7 @@ public class App {
 
                                         running = false;
 
+
                                         break;
 
                                     case 2:
@@ -348,3 +356,8 @@ public class App {
         a.disconnect();
     }
 }
+
+
+
+
+

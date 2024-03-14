@@ -45,24 +45,26 @@ public class Country {
 
             try {
                 Statement stmt = a.con.createStatement();
-                String select = "";
+                String select = "SELECT Code, Name, Continent, Region, Population " +
+                        "FROM country " +
+                        "WHERE " + area + " = '" + areaName + "' " +
+                        "ORDER BY Population DESC LIMIT " + N;
+
                 ResultSet rset = stmt.executeQuery(select);
 
                 ArrayList<Country> countries = new ArrayList<Country>();
                 while (rset.next()) {
                     Country country = new Country();
-                    country.code = rset.getString("country.Code");
-                    country.name = rset.getString("country.Name");
-                    country.continent = rset.getString("country.Continent");
-                    country.region = rset.getString("country.Region");
-                    country.population = rset.getString("city.Population");
+                    country.code = rset.getString("Code");
+                    country.name = rset.getString("Name");
+                    country.continent = rset.getString("Continent");
+                    country.region = rset.getString("Region");
+                    country.population = rset.getString("Population");
                     countries.add(country);
                 }
                 return countries;
             }
-
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 System.out.println(e.getMessage());
                 System.out.println("Failed to get country details");
                 return null;

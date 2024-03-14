@@ -16,4 +16,16 @@ public class ShowReports {
                             + c.get(i).capital );
         }
     }
+    public void showCities(ArrayList<City> ci){
+
+        for(int i = 0; i < ci.size(); i++ )
+        {
+            System.out.println(
+                    ci.get(i).name + " "
+                            + ci.get(i).country + " "
+                            + ci.get(i).district + " "
+                            + ci.get(i).population);
+        }
+
+    }
 }

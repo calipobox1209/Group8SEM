@@ -18,11 +18,20 @@ public class reportFactory {
         switch (query) {
 
             case 1:
-
-                countries = countryReport.reportAllCountriesByArea(a,b);
+                if (a == "World")
+                {
+                    countries = countryReport.reportAllCountriesByWorld();
+                }else {
+                    countries = countryReport.reportAllCountriesByArea(a, b);
+                }
                 break;
             case 2:
-                countries = countryReport.reportNCountriesByArea(a,b,n);
+                if (a == "World")
+                {
+                    countries = countryReport.reportNCountriesByWorld(n);
+                }else {
+                    countries = countryReport.reportNCountriesByArea(a, b, n);
+                }
                 break;
             case 3:
                 countries = countryReport.reportSingleCountry(b);

@@ -32,6 +32,8 @@ public class App {
         while (app) {
             while (running) {
 
+                Countries.clear();
+
                 System.out.println("Select an option:");
                 System.out.println("1 - Generate country report");
                 System.out.println("2 - Generate city report");
@@ -142,7 +144,8 @@ public class App {
                             case 3:
                                 System.out.println("Please enter the country you wish to generate a report for: ");
                                 area = scanner1.nextLine();
-                                factory.countryReportMaker(3, 0, "Placeholder", area);
+                                Countries = factory.countryReportMaker(3, 0, "Placeholder", area);
+                                show.showCountries(Countries);
                                 running = false;
 
                                 break;

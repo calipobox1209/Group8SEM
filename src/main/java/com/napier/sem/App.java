@@ -20,6 +20,7 @@ public class App {
         int query;
         int n;
         ArrayList<Country> Countries = new ArrayList<>();
+        ArrayList<City> Cities = new ArrayList<>();
 
         // Connect to database
         a.connect();
@@ -159,7 +160,163 @@ public class App {
 
 
                     case 2:
-                        // Implement the logic or call a method to generate and display a city report
+                        int choice4;
+                        System.out.println("Select an option:");
+                        System.out.println("1 - Generate a list of N cities report");
+                        System.out.println("2 - Generate all cities report");
+                        System.out.println("3 - Generate single city report");
+                        choice4 = scanner.nextInt();
+
+                        switch (choice4){
+
+                            case 1:
+                                int choice5;
+                                System.out.println("Please enter the area you wish to generate a report for: ");
+                                System.out.println("1 - Region");
+                                System.out.println("2 - Continent");
+                                System.out.println("3 - World");
+                                System.out.println("4 - Country");
+                                System.out.println("5 - District");
+                                choice5 = scanner.nextInt();
+
+                                switch (choice5){
+
+                                    case 1:
+                                        System.out.println("Please enter the name of the region");
+                                        area = scanner1.nextLine();
+                                        System.out.println("Please enter the number of countries in the report: ");
+                                        n = scanner1.nextInt();
+                                        Cities = factory.cityReportMaker(2, n, "Region", area);
+                                        show.showCities(Cities);
+
+                                        running = false;
+
+                                        break;
+
+                                    case 2:
+                                        System.out.println("Please enter the name of the Continent");
+                                        area = scanner1.nextLine();
+                                        System.out.println("Please enter the number of countries in the report: ");
+                                        n = scanner1.nextInt();
+                                        Cities = factory.cityReportMaker(2, n, "Continent", area);
+                                        show.showCities(Cities);
+
+                                        running = false;
+
+                                        break;
+
+                                    case 3:
+                                        System.out.println("Please enter the number of countries in the report: ");
+                                        n = scanner1.nextInt();
+                                        Cities = factory.cityReportMaker(2, n, "World", "World");
+                                        show.showCities(Cities);
+
+                                        running = false;
+
+                                        break;
+
+                                    case 4:
+                                        System.out.println("Please enter the name of the Country");
+                                        area = scanner1.nextLine();
+                                        System.out.println("Please enter the number of countries in the report: ");
+                                        n = scanner1.nextInt();
+                                        Cities = factory.cityReportMaker(2, n, "Country", area);
+                                        show.showCities(Cities);
+
+                                        running = false;
+
+                                        break;
+
+                                    case 5:
+                                        System.out.println("Please enter the name of the District");
+                                        area = scanner1.nextLine();
+                                        System.out.println("Please enter the number of countries in the report: ");
+                                        n = scanner1.nextInt();
+                                        Cities = factory.cityReportMaker(2, n, "District", area);
+                                        show.showCities(Cities);
+
+                                        running = false;
+
+                                        break;
+
+                                }
+
+                            case 2:
+                                int choice6;
+                                System.out.println("Please enter the area you wish to generate a report for: ");
+                                System.out.println("1 - Region");
+                                System.out.println("2 - Continent");
+                                System.out.println("3 - World");
+                                System.out.println("4 - Country");
+                                System.out.println("5 - District");
+                                choice6 = scanner.nextInt();
+
+                                    switch(choice6){
+
+                                        case 1:
+                                            System.out.println("Please enter the name of the region");
+                                            area = scanner1.nextLine();
+                                            Cities = factory.cityReportMaker(1, 0, "Region", area);
+                                            show.showCities(Cities);
+
+                                            running = false;
+
+                                            break;
+
+                                        case 2:
+                                            System.out.println("Please enter the name of the continent");
+                                            area = scanner1.nextLine();
+                                            Cities = factory.cityReportMaker(1, 0, "Continent", area);
+                                            show.showCities(Cities);
+
+                                            running = false;
+
+                                            break;
+
+                                        case 3:
+                                            Cities = factory.cityReportMaker(1, 0, "World", "World");
+                                            show.showCities(Cities);
+
+                                            running = false;
+
+                                            break;
+
+                                        case 4:
+                                            System.out.println("Please enter the name of the country");
+                                            area = scanner1.nextLine();
+                                            Cities = factory.cityReportMaker(1, 0, "country", area);
+                                            show.showCities(Cities);
+
+                                            running = false;
+
+                                            break;
+
+                                        case 5:
+                                            System.out.println("Please enter the name of the district");
+                                            area = scanner1.nextLine();
+                                            Cities = factory.cityReportMaker(1, 0, "District", area);
+                                            show.showCities(Cities);
+
+                                            running = false;
+
+                                            break;
+
+                                    }
+
+                            case 3:
+                                System.out.println("Please enter the city you wish to generate a report for: ");
+                                area = scanner1.nextLine();
+                                Cities = factory.cityReportMaker(3, 0, "Placeholder", area);
+                                show.showCities(Cities);
+                                running = false;
+
+                                break;
+
+                            default:
+                                System.out.println("Invalid option, please try again.");
+
+
+                        }
 
                         break;
                     case 3:

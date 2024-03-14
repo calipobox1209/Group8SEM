@@ -1,4 +1,5 @@
 package com.napier.sem;
+//this is a singleton class to handle the duties of maintaining a connection to the database
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;

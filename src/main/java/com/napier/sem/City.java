@@ -1,5 +1,6 @@
 package com.napier.sem;
-
+//This class contains functions used to send sql statements to the database in order to obtain report information specifically pertaining to cities
+//many of these functions are very similar with the main noticable differences residing in the SQL query
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -9,9 +10,9 @@ public class City {
     String country;
     String district;
     String population;
-
+    //Getting instance of connection provider
     ConnectionProvider a = ConnectionProvider.getInstance();
-
+    //this function is for the report all cities by user inputted area functionality
     public ArrayList<City> reportAllCitiesByArea(String name, String countryName) {
         try {
             Statement stmt = a.con.createStatement();
@@ -22,7 +23,7 @@ public class City {
                     "ORDER BY city.Population DESC ";
 
             ResultSet rset = stmt.executeQuery(select);
-
+            //takes the outputs from the query and creates city objects with the obtained data
             ArrayList<City> cities = new ArrayList<City>();
             while (rset.next()) {
                 City city = new City();
@@ -32,6 +33,7 @@ public class City {
                 city.country = rset.getString("CountryName");
                 cities.add(city);
             }
+            //returns the ArrayList cities
             return cities;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -39,7 +41,7 @@ public class City {
             return null;
         }
     }
-
+    //this function is for the special case of reporting on all cities in the world
     public ArrayList<City> reportAllCitiesByWorld() {
         try {
             Statement stmt = a.con.createStatement();
@@ -47,9 +49,9 @@ public class City {
             String select = "SELECT city.Name, country.Name as CountryName, city.District, city.Population " +
                     "FROM city  JOIN country ON city.CountryCode = country.Code " +
                     "ORDER BY city.Population DESC ";
-
+            
             ResultSet rset = stmt.executeQuery(select);
-
+            //creates city objects and populates cities arraylist
             ArrayList<City> cities = new ArrayList<City>();
             while (rset.next()) {
                 City city = new City();
@@ -78,7 +80,7 @@ public class City {
                     "ORDER BY Population DESC LIMIT " + N;
 
             ResultSet rset = stmt.executeQuery(select);
-
+            //this function creates city objects and populates an array list of cities
             ArrayList<City> topNcities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
@@ -99,7 +101,7 @@ public class City {
     public ArrayList<City> reportNCitiesByWorld(int N) {
         try {
             Statement stmt = a.con.createStatement();
-            // Construct SQL query to select top N cities in a specific area ordered by population
+            // SQL query to select top N cities in the world ordered by population
             String select = "SELECT city.Name, country.Name as CountryName, city.District, city.Population " +
                     "FROM city JOIN country ON city.CountryCode = country.Code " +
                     "ORDER BY Population DESC LIMIT " + N;

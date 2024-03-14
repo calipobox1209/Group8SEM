@@ -11,12 +11,7 @@ public class City {
     String district;
     String population;
 
-    ConnectionProvider a = new ConnectionProvider();
-
-
-
-
-
+    ConnectionProvider a = ConnectionProvider.getInstance();
 
      public ArrayList<City> reportAllCitiesByArea(String area){
         try {

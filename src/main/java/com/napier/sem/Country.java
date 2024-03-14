@@ -11,9 +11,7 @@ public class Country {
     String region;
     String population;
     String capital;
-    ConnectionProvider a = new ConnectionProvider();
-
-
+    ConnectionProvider a = ConnectionProvider.getInstance();
 
        public ArrayList<Country> reportAllCountriesByArea(String area, String areaName){
                 try {

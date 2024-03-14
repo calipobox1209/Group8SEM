@@ -13,7 +13,7 @@ public class App
     public static void main(String[] args)
     {
         // Create new Application
-        ConnectionProvider a = new ConnectionProvider();
+        ConnectionProvider a = ConnectionProvider.getInstance();
 
         String area;
         int query;

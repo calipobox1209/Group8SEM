@@ -71,32 +71,34 @@ public class Country {
             }
         }
 
-        public ArrayList<Country> reportSingleCountry(String areaName){
-           try {
-               Statement stmt = a.con.createStatement();
-               String select = "";
-               ResultSet rset = stmt.executeQuery(select);
+    public ArrayList<Country> reportSingleCountry(String countryName){
+        try {
+            Statement stmt = a.con.createStatement();
+            // SQL query to select a single country by its name
+            String select = "SELECT Code, Name, Continent, Region, Population " +
+                    "FROM country " +
+                    "WHERE Name = '" + countryName + "'";
 
-               ArrayList<Country> countries = new ArrayList<Country>();
-               while (rset.next()) {
-                   Country country = new Country();
-                   country.code = rset.getString("country.Code");
-                   country.name = rset.getString("country.Name");
-                   country.continent = rset.getString("country.Continent");
-                   country.region = rset.getString("country.Region");
-                   country.population = rset.getString("city.Population");
-                   countries.add(country);
-               }
-               return countries;
-           }
+            ResultSet rset = stmt.executeQuery(select);
 
-           catch (Exception e)
-           {
-               System.out.println(e.getMessage());
-               System.out.println("Failed to get country details");
-               return null;
-           }
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next()) {
+                Country country = new Country();
+                country.code = rset.getString("Code");
+                country.name = rset.getString("Name");
+                country.continent = rset.getString("Continent");
+                country.region = rset.getString("Region");
+                country.population = rset.getString("Population");
+                countries.add(country);
+            }
+            return countries;
         }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
 
 }
 

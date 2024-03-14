@@ -1,12 +1,13 @@
 package com.napier.sem;
 
-
+//main class, facilitates user data collection via rudimentary UI
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
 
 public class App {
+    //instantiates country,city,and factory objects that will be used in the class
     static ReportFactory factory = new ReportFactory();
     Country country = new Country();
     City city = new City();
@@ -14,11 +15,12 @@ public class App {
 
 
     public static void main(String[] args) {
+        //showreport object for display of reports to console
         ShowReports show = new ShowReports();
 
 
 
-        // Create new Application
+        // Instantiates singleton instance
         ConnectionProvider a = ConnectionProvider.getInstance();
 
         String area;
@@ -32,10 +34,12 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         Scanner scanner1 = new Scanner(System.in);
 
-
+        //booleans to govern the while loops
         boolean app = true;
         boolean running = true;
+        //the app loop ends when the user decides to abort the program, at which time it disconnects from the database and disconnects the scanners
         while (app) {
+            //running loop ends when the user decides to abort the program
             while (running) {
 
                 Countries.clear();
@@ -54,7 +58,7 @@ public class App {
                 switch (choice) {
                     // This case is for Countries
                     case 1:
-                        // Implement the logic or call a method to generate and display a country report
+
                         int choice1;
                         System.out.println("Select an option:");
                         System.out.println("1 - Generate a list of N countries report");

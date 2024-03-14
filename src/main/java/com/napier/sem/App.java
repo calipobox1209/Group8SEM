@@ -1,10 +1,11 @@
 package com.napier.sem;
 
-//main class, facilitates user data collection via rudimentary UI
 import java.util.ArrayList;
 import java.util.Scanner;
 
+///^^^^ Package and import stuff
 
+//this is the main app for the population database
 
 public class App {
     //instantiates country,city,and factory objects that will be used in the class
@@ -13,23 +14,25 @@ public class App {
     City city = new City();
 
 
-
+    //main class, facilitates user data collection via rudimentary UI
     public static void main(String[] args) {
         //showreport object for display of reports to console
         ShowReports show = new ShowReports();
 
 
-
         // Instantiates singleton instance
         ConnectionProvider a = ConnectionProvider.getInstance();
 
+        //user input variables for the query conditions
         String area;
         int query;
         int n;
+
+        //arraylists to store country and city objects
         ArrayList<Country> Countries = new ArrayList<>();
         ArrayList<City> Cities = new ArrayList<>();
 
-        // Connect to database
+        // Connect to database and create scanners
         a.connect();
         Scanner scanner = new Scanner(System.in);
         Scanner scanner1 = new Scanner(System.in);
@@ -43,7 +46,7 @@ public class App {
             while (running) {
 
                 Countries.clear();
-
+                //main menu
                 System.out.println("Select an option:");
                 System.out.println("1 - Generate country report");
                 System.out.println("2 - Generate city report");
@@ -68,7 +71,7 @@ public class App {
                         choice1 = scanner.nextInt();
                         // This switch is responsible for handling which kind of country report to generate
                         switch (choice1) {
-                            // case for N countries
+                            // case for top N populated countries in an area report (N is input after the choice)
                             case 1:
                                 int choice2;
                                 System.out.println("Please enter the area you wish to generate a report for: ");
@@ -79,6 +82,8 @@ public class App {
                                 choice2 = scanner.nextInt();
 
                                 switch (choice2) {
+
+                                    //top n populated countries in region report
                                     case 1:
                                         System.out.println("Please enter the name of the region");
                                         area = scanner1.nextLine();
@@ -90,6 +95,7 @@ public class App {
 
                                         break;
 
+                                    //top n populated countries in continent report
                                     case 2:
                                         System.out.println("Please enter the name of the Continent");
                                         area = scanner1.nextLine();
@@ -101,6 +107,7 @@ public class App {
 
                                         break;
 
+                                    //top n populated countries in world report
                                     case 3:
                                         System.out.println("Please enter the number of countries in the report: ");
                                         n = scanner1.nextInt();
@@ -161,13 +168,14 @@ public class App {
                                 break;
 
 
+                            //if the user enters an invalid input they get asked to retry
                             default:
                                 System.out.println("Invalid option, please try again.");
 
                         }
                         break;
 
-
+                    //City reports menu
                     case 2:
                         int choice4;
                         System.out.println("Select an option:");
@@ -176,8 +184,10 @@ public class App {
                         System.out.println("3 - Generate single city report");
                         choice4 = scanner.nextInt();
 
+                        //this switch handles what kind of city report the user wants
                         switch (choice4){
 
+                            //top N populated cities in an area report
                             case 1:
                                 int choice5;
                                 System.out.println("Please enter the area you wish to generate a report for: ");
@@ -190,6 +200,7 @@ public class App {
 
                                 switch (choice5){
 
+                                    //top N populated cities in a region report
                                     case 1:
                                         System.out.println("Please enter the name of the region");
                                         area = scanner1.nextLine();
@@ -203,6 +214,7 @@ public class App {
 
                                         break;
 
+                                    //top N populated cities in a continent report
                                     case 2:
                                         System.out.println("Please enter the name of the Continent");
                                         area = scanner1.nextLine();
@@ -215,6 +227,7 @@ public class App {
 
                                         break;
 
+                                    //top N populated cities in the world report
                                     case 3:
                                         System.out.println("Please enter the number of cities in the report: ");
                                         n = scanner1.nextInt();
@@ -225,6 +238,7 @@ public class App {
 
                                         break;
 
+                                    //top N populated cities in a country report
                                     case 4:
                                         System.out.println("Please enter the name of the Country");
                                         area = scanner1.nextLine();
@@ -237,6 +251,8 @@ public class App {
 
                                         break;
 
+
+                                    //top N populated cities in a district report
                                     case 5:
                                         System.out.println("Please enter the name of the District");
                                         area = scanner1.nextLine();
@@ -252,6 +268,7 @@ public class App {
                                 }
                             break;
 
+                            //generate ALL cities in an area report
                             case 2:
                                 int choice6;
                                 System.out.println("Please enter the area you wish to generate a report for: ");
@@ -261,9 +278,10 @@ public class App {
                                 System.out.println("4 - Country");
                                 System.out.println("5 - District");
                                 choice6 = scanner.nextInt();
-
+                                    //this switch handles which area the user wants to see all the cities from
                                     switch(choice6){
 
+                                        //all cities in a region report
                                         case 1:
                                             System.out.println("Please enter the name of the region");
                                             area = scanner1.nextLine();
@@ -274,6 +292,7 @@ public class App {
 
                                             break;
 
+                                        //all cities in a continent report
                                         case 2:
                                             System.out.println("Please enter the name of the continent");
                                             area = scanner1.nextLine();
@@ -284,6 +303,7 @@ public class App {
 
                                             break;
 
+                                        //all cities in the world report
                                         case 3:
                                             Cities = factory.cityReportMaker(1, 0, "World", "World");
                                             show.showCities(Cities);
@@ -292,6 +312,7 @@ public class App {
 
                                             break;
 
+                                        //all cities in a country report
                                         case 4:
                                             System.out.println("Please enter the name of the country");
                                             area = scanner1.nextLine();
@@ -302,6 +323,7 @@ public class App {
 
                                             break;
 
+                                        //all cities in a district report
                                         case 5:
                                             System.out.println("Please enter the name of the district");
                                             area = scanner1.nextLine();
@@ -314,6 +336,8 @@ public class App {
 
                                     }
                                 break;
+
+                            //generate a specific city report
                             case 3:
                                 System.out.println("Please enter the city you wish to generate a report for: ");
                                 area = scanner1.nextLine();
@@ -323,6 +347,8 @@ public class App {
 
                                 break;
 
+
+                            //if the user enters an invalid input they get asked to retry
                             default:
                                 System.out.println("Invalid option, please try again.");
 
@@ -335,14 +361,23 @@ public class App {
 
                         break;
                     // Add more cases for additional reports
+
+                    //this case exits the program
                     case 0:
                         running = false;
                         System.out.println("Exiting the program. Goodbye!");
                         break;
+
+                    //if the user enters an invalid input they get asked to retry
                     default:
                         System.out.println("Invalid option, please try again.");
                 }
             }
+
+
+            //the user is asked if they want to generate another report
+            //if they do they get sent back to the main menu
+            //if they don't the program ends
             int decision;
             System.out.println("Would you like to generate another report? 1/2");
             decision = scanner.nextInt();

@@ -1,7 +1,10 @@
 package com.napier.sem;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
+
+import static java.lang.Math.random;
 
 ///^^^^ Package and import stuff
 
@@ -27,13 +30,19 @@ public class App {
         String area;
         int query;
         int n;
+        Random rand = new Random();
 
         //arraylists to store country and city objects
         ArrayList<Country> Countries = new ArrayList<>();
         ArrayList<City> Cities = new ArrayList<>();
 
         // Connect to database and create scanners
-        a.connect();
+        if (args.length < 1) {
+            a.connect("localhost:33060", 10000);
+        } else {
+            a.connect(args[0], Integer.parseInt(args[1]));
+        }
+
         Scanner scanner = new Scanner(System.in);
         Scanner scanner1 = new Scanner(System.in);
 
@@ -55,6 +64,7 @@ public class App {
 
                 System.out.print("Enter your choice: ");
                 // Adding nextLine() to consume the rest of the line after the nextInt()
+
                 int choice = scanner.nextInt();
                 scanner.nextLine(); // Consume newline
                 // This switch is responsible for determining which type of report to create i.e Country or City

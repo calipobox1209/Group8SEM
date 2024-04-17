@@ -6,6 +6,7 @@ import org.junit.jupiter.api.TestInstance;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static java.lang.Integer.parseInt;
 import static org.junit.jupiter.api.Assertions.*;
@@ -68,6 +69,24 @@ public class AppIntegrationTest
         assertNotNull(city2);
     }
 
+    @Test
+    void testcountryReportMaker()
+    {
+        ArrayList<Country> country3 = report.countryReportMaker(2,30, "Continent", "Asia");
+        assertEquals(30, country3.size());
+        assertNotNull(country3);
+        assertEquals("Asia", country3.get(16).continent);
+    }
+
+/*    @Test
+    void testCityReportMaker()
+    {
+        ArrayList<City> city = report.cityReportMaker(2, 25, "Continent", "Europe");
+        assertEquals(25, city.size());
+        assertNotNull(city);
+        assertEquals("Europe", city.get(12).country);
+    }
+*/
 
 
 }

@@ -42,14 +42,16 @@ public class City {
         }
     }
     //this function is for the special case of reporting on all cities in the world
-    public ArrayList<City> reportAllCitiesByWorld() {
+    public ArrayList<City> reportAllCitiesByWorld(boolean capital) {
         try {
-            Statement stmt = a.con.createStatement();
+
+            if (capital == false){
+                Statement stmt = a.con.createStatement();
             // SQL query to select all cities in the World
             String select = "SELECT city.Name, country.Name as CountryName, city.District, city.Population " +
-                    "FROM city  JOIN country ON city.CountryCode = country.Code " +
+                    "FROM city JOIN country ON city.CountryCode = country.Code " +
                     "ORDER BY city.Population DESC ";
-            
+
             ResultSet rset = stmt.executeQuery(select);
             //creates city objects and populates cities arraylist
             ArrayList<City> cities = new ArrayList<City>();
@@ -62,11 +64,33 @@ public class City {
                 cities.add(city);
             }
             return cities;
-        } catch (Exception e) {
+        } else {
+                Statement stmt = a.con.createStatement();
+                // SQL query to select all cities in the World
+                String select = "SELECT city.Name, country.Name as CountryName, city.Population " +
+                        "FROM city  JOIN country ON city.ID = country.Capital " +
+                        "ORDER BY city.Population DESC ";
+
+                ResultSet rset = stmt.executeQuery(select);
+                //creates city objects and populates cities arraylist
+                ArrayList<City> cities = new ArrayList<City>();
+                while (rset.next()) {
+                    City city = new City();
+                    city.name = rset.getString("Name");
+                    city.district = "";
+                    city.population = rset.getString("Population");
+                    city.country = rset.getString("CountryName");
+                    cities.add(city);
+                }
+                return cities;
+            }
+        }
+        catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
             return null;
         }
+
     }
 
 
@@ -131,7 +155,7 @@ public class City {
             // SQL query to select a single city by name
             String select = "SELECT city.Name, country.Name as CountryName, city.District, city.Population " +
                             "FROM city JOIN country ON city.CountryCode = country.Code " +
-                            "WHERE Name = '" + cityName + "' ";
+                            "WHERE city.Name = '" + cityName + "' ";
 
             ResultSet rset = stmt.executeQuery(select);
 

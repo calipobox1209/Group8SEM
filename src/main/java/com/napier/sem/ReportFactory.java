@@ -45,14 +45,14 @@ public class ReportFactory {
 
     }
     //this is the function that handles city related reports, same intake and ideas associated as above function
-    public ArrayList<City> cityReportMaker(int query, int n, String a, String b)
+    public ArrayList<City> cityReportMaker(int query, int n, String a, String b, boolean capital)
     {
         switch (query) {
             case 1:
                 //world special case
                 if (a == "World")
                 {
-                    cities = cityReport.reportAllCitiesByWorld();
+                    cities = cityReport.reportAllCitiesByWorld(capital);
                 }else {
                     cities = cityReport.reportAllCitiesByArea(a, b);
                 }

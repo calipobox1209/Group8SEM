@@ -131,7 +131,7 @@ public class City {
             // SQL query to select a single city by name
             String select = "SELECT city.Name, country.Name as CountryName, city.District, city.Population " +
                             "FROM city JOIN country ON city.CountryCode = country.Code " +
-                            "WHERE Name = '" + cityName + "' ";
+                            "WHERE city.Name = '" + cityName + "' ";
 
             ResultSet rset = stmt.executeQuery(select);
 

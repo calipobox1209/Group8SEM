@@ -54,24 +54,24 @@ public class ReportFactory {
                 {
                     cities = cityReport.reportAllCitiesByWorld(capital);
                 }else {
-                    cities = cityReport.reportAllCitiesByArea(a, b);
+                    cities = cityReport.reportAllCitiesByArea(a, b, capital);
                 }
                 break;
             case 2:
                 //world special case
                 if (a == "World")
                 {
-                    cities = cityReport.reportNCitiesByWorld(n);
+                    cities = cityReport.reportNCitiesByWorld(n, capital);
                 }else {
-                    cities = cityReport.reportNCitiesByArea(a, b, n);
+                    cities = cityReport.reportNCitiesByArea(a, b, n, capital);
                 }
                 break;
             case 3:
                 //single city special case
-                cities = cityReport.reportSingleCity(b);
+                cities = cityReport.reportSingleCity(b, capital);
                 break;
         }
-        //passes retrieved cities array up to the main fucntion
+        //passes retrieved cities array up to the main function
         return cities;
     }
 

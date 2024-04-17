@@ -60,7 +60,6 @@ public class App {
                 System.out.println("Select an option:");
                 System.out.println("1 - Generate country report");
                 System.out.println("2 - Generate city report");
-                System.out.println("3 - Generate capital city report");
                 System.out.println("0 - Exit");
 
                 System.out.print("Enter your choice: ");
@@ -405,11 +404,10 @@ public class App {
                         }
 
                         break;
-                    case 3:
-                        // Implement the logic or call a method to generate and display a capital city report
 
-                        break;
                     // Add more cases for additional reports
+                    // Language report case?
+                    // Population report case?
 
                     //this case exits the program
                     case 0:

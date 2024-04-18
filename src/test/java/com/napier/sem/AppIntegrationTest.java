@@ -39,7 +39,7 @@ public class AppIntegrationTest
         assertEquals(country1.get(0).continent, "Asia");
         assertEquals(country1.get(0).region, "Middle East");
         assertEquals(parseInt(country1.get(0).population), 2441000);
-        assertEquals(parseInt(country1.get(0).capital), 65);
+        assertEquals(country1.get(0).capital, "Abu Dhabi");
     }
 
     @Test
@@ -51,7 +51,7 @@ public class AppIntegrationTest
     @Test
     void testGetCity()
     {
-        ArrayList<City> city1 = city.reportSingleCity("Houston");
+        ArrayList<City> city1 = city.reportSingleCity("Houston", false);
         assertEquals(city1.get(0).name, "Houston");
         assertEquals(city1.get(0).district, "Texas");
         assertEquals(parseInt(city1.get(0).population), 1953631);
@@ -63,7 +63,7 @@ public class AppIntegrationTest
     @Test
     void testGetCityList()
     {
-        ArrayList<City> city2 = city.reportNCitiesByWorld(50);
+        ArrayList<City> city2 = city.reportNCitiesByWorld(50, false);
         assertTrue(parseInt(city2.get(0).population) > parseInt(city2.get(49).population));
         assertFalse(city2.isEmpty());
         assertNotNull(city2);
@@ -78,15 +78,15 @@ public class AppIntegrationTest
         assertEquals("Asia", country3.get(16).continent);
     }
 
-/*    @Test
+    @Test
     void testCityReportMaker()
     {
-        ArrayList<City> city = report.cityReportMaker(2, 25, "Continent", "Europe");
+        ArrayList<City> city = report.cityReportMaker(2, 25, "Continent", "Europe", false);
         assertEquals(25, city.size());
         assertNotNull(city);
-        assertEquals("Europe", city.get(12).country);
+        assertEquals("Poland", city.get(12).country);
     }
-*/
+
 
 
 }

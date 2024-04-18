@@ -91,17 +91,18 @@ public class ReportFactory {
                 {
                     populations = populationReport.reportPopulationByWorld();
                 }else {
-                    //populations = populationReport.reportPopulationByArea(a, b);
+                    populations = populationReport.reportPopulationByArea(a, b);
                     return null;
                 }
                 break;
             case 2:
                 //exact sane thinking here as the above if statement
+                populations = populationReport.reportSingleCity(b);
 
                 break;
             case 3:
                 //special case for single country
-                countries = countryReport.reportSingleCountry(b);
+                populations = populationReport.reportSingleCountry(b);
                 break;
         }
         //we pass the retrieved array back to main

@@ -15,6 +15,7 @@ public class App {
     static ReportFactory factory = new ReportFactory();
     Country country = new Country();
     City city = new City();
+    population population = new population();
 
 
     //main class, facilitates user data collection via rudimentary UI
@@ -36,6 +37,7 @@ public class App {
         //arraylists to store country and city objects
         ArrayList<Country> Countries = new ArrayList<>();
         ArrayList<City> Cities = new ArrayList<>();
+        ArrayList<population> Populace = new ArrayList<>();
 
         // Connect to database and create scanners
         if (args.length < 1) {
@@ -60,6 +62,7 @@ public class App {
                 System.out.println("Select an option:");
                 System.out.println("1 - Generate country report");
                 System.out.println("2 - Generate city report");
+                System.out.println("3 - Generate populations report");
                 System.out.println("0 - Exit");
 
                 System.out.print("Enter your choice: ");
@@ -197,6 +200,7 @@ public class App {
                         System.out.println("Select an option:");
                         System.out.println("1 - Generate a capital cities report");
                         System.out.println("2 - Generate an all cities report");
+
 
                         choice4a = scanner.nextInt();
                         scanner.nextLine();
@@ -407,6 +411,29 @@ public class App {
 
                     // Add more cases for additional reports
                     // Language report case?
+                    case 3:
+                        int choicepop;
+                        System.out.println("Please enter the area you wish to generate a population report for: ");
+                        System.out.println("1 - Region");
+                        System.out.println("2 - Continent");
+                        System.out.println("3 - World");
+                        System.out.println("4 - Country");
+                        System.out.println("5 - District");
+                        System.out.println("6 - City");
+                        choicepop = scanner.nextInt();
+                        scanner.nextLine();
+
+                        switch (choicepop) {
+
+                            //top N populated cities in a region report
+                            case 3:
+
+                                Populace = factory.populationReportMaker(1,"World", "placeholder");
+                                show.showPopulation(Populace);
+                                running = false;
+                                break;
+                        }
+                        break;
                     // Population report case?
 
                     //this case exits the program

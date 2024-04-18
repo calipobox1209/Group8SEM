@@ -197,6 +197,7 @@ public class population {
                 pop.ruralPercent = String.format("%.2f", (double) ruralPop / areaPop * 100);
                 populations.add(pop);
             }
+
             return populations;
 
         } catch(Exception e){

@@ -47,3 +47,4 @@ jobs:
           automatic_release_tag: "latest"
           files: |
             ./target/*.jar
+

@@ -17,6 +17,8 @@ public class AppIntegrationTest
     static City city;
     static Country country;
     static ReportFactory report;
+
+    static population population;
     static ShowReports show;
     static ConnectionProvider a = ConnectionProvider.getInstance();
     @BeforeAll
@@ -25,6 +27,7 @@ public class AppIntegrationTest
         app = new App();
         city = new City();
         country = new Country();
+        population = new population();
         report = new ReportFactory();
         show = new ShowReports();
         a.connect("localhost:33060", 30000);
@@ -87,6 +90,41 @@ public class AppIntegrationTest
         assertEquals("Poland", city.get(12).country);
     }
 
+    @Test
+    void testPopulationReportMaker()
+    {
+        ArrayList<population> population = report.populationReportMaker(3, "placeholder", "Albania");
+        assertEquals(1, population.size());
+        assertNotNull(population);
+        assertEquals("Albania", population.get(0).countryName);
+    }
 
+    @Test
+    void testPopulationWorldReportMaker()
+    {
+        ArrayList<population> population = report.populationReportMaker(1, "World", "Placeholder");
+        assertEquals(239, population.size());
+        assertNotNull(population);
+        assertEquals("Albania", population.get(4).countryName);
+    }
+
+
+@Test
+    void testPopulationCityReportMaker()
+    {
+        ArrayList<population> population = report.populationReportMaker(2, "placeholder", "Glasgow");
+        assertEquals(1, population.size());
+        assertNotNull(population);
+        assertEquals("United Kingdom", population.get(0).countryName);
+    }
+
+@Test
+void capitalCitytester() {
+
+    ArrayList<City> city2 = city.reportNCitiesByWorld(50, true);
+    assertTrue(parseInt(city2.get(0).population) > parseInt(city2.get(49).population));
+    assertFalse(city2.isEmpty());
+    assertNotNull(city2);
+}
 
 }

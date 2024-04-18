@@ -174,20 +174,27 @@ public class population {
     public ArrayList<population> reportPercentagePop(String area, String areaName){
         try{
             Statement stmt = a.con.createStatement();
-            String select = "SELECT country." + area + " as AreaType, SUM(country.Population) as AreaPop, SUM(city.Population) as CityPop, SUM(country.Population) - SUM(city.Population) as RuralPop " +
-                    "FROM country JOIN city ON country.Code = city.CountryCode " +
-                    "WHERE country." + area + " = '" + areaName + "' " +
-                    "GROUP BY AreaType ";
+            String select = "SELECT country." + area + " as AreaType, "
+                    + "SUM(country.Population) as AreaPop, "
+                    + "SUM(city.Population) as CityPop, "
+                    + "SUM(country.Population) - SUM(city.Population) as RuralPop "
+                    + "FROM country JOIN city ON country.Code = city.CountryCode "
+                    + "WHERE country." + area + " = '" + areaName + "' "
+                    + "GROUP BY AreaType";
             ResultSet rset = stmt.executeQuery(select);
             ArrayList<population> populations = new ArrayList<population>();
             while (rset.next()) {
                 population pop = new population();
                 pop.name = rset.getString("AreaType");
-                pop.population = rset.getString("AreaPop");
-                pop.cityPop = rset.getString("CityPop");
-                pop.ruralPop = rset.getString("RuralPop");
-                pop.cityPercent = Integer.toString((Integer.parseInt(pop.cityPop) / Integer.parseInt(pop.population)) * 100);
-                pop.ruralPercent = Integer.toString((Integer.parseInt(pop.ruralPop) / Integer.parseInt(pop.population)) * 100);
+                long areaPop = rset.getLong("AreaPop");
+                long cityPop = rset.getLong("CityPop");
+                long ruralPop = areaPop - cityPop;
+
+                pop.population = Long.toString(areaPop);
+                pop.cityPop = Long.toString(cityPop);
+                pop.ruralPop = Long.toString(ruralPop);
+                pop.cityPercent = String.format("%.2f", (double) cityPop / areaPop * 100);
+                pop.ruralPercent = String.format("%.2f", (double) ruralPop / areaPop * 100);
                 populations.add(pop);
             }
             return populations;

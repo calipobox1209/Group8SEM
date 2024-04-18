@@ -245,9 +245,9 @@ public class App {
 
                                     //top N populated cities in a region report
                                     case 1:
-                                        
+
                                         System.out.println("Please enter the name of the region ");
-                                        
+
                                         area = scanner1.nextLine();
                                         System.out.println(area);
                                         System.out.println("Please enter the number of cities in the report: ");
@@ -413,25 +413,81 @@ public class App {
                     // Language report case?
                     case 3:
                         int choicepop;
-                        System.out.println("Please enter the area you wish to generate a population report for: ");
-                        System.out.println("1 - Region");
-                        System.out.println("2 - Continent");
-                        System.out.println("3 - World");
-                        System.out.println("4 - Country");
-                        System.out.println("5 - District");
-                        System.out.println("6 - City");
+                        System.out.println("Please enter the type of report you wish to generate a population report for: ");
+                        System.out.println("1 - Population of the world");
+                        System.out.println("2 - Population of a country");
+                        System.out.println("3 - Population of a city");
+                        System.out.println("4 - Population of an encompassing area");
                         choicepop = scanner.nextInt();
                         scanner.nextLine();
 
                         switch (choicepop) {
 
-                            //top N populated cities in a region report
-                            case 3:
+                            // Generates population of the world report
+                            case 1:
 
                                 Populace = factory.populationReportMaker(1,"World", "placeholder");
                                 show.showPopulation(Populace);
                                 running = false;
                                 break;
+                                // generates single country population report
+                            case 2:
+                                System.out.println("Please enter the country you wish to generate a report for: ");
+                                area = scanner1.nextLine();
+                                Populace = factory.populationReportMaker(3, "placeholder", area);
+                                show.showPopulation(Populace);
+                                running = false;
+                                break;
+                                // generates single city population report
+                            case 3:
+                                System.out.println("Please enter the city you wish to generate a report for: ");
+                                area = scanner1.nextLine();
+                                Populace = factory.populationReportMaker(2, "placeholder", area);
+                                show.showPopulation(Populace);
+                                running = false;
+                                break;
+                            case 4:
+                                int choicepop2;
+                                System.out.println("Please enter the area you wish to generate a report for ");
+                                System.out.println("1 - Population of a continent");
+                                System.out.println("2 - Population of a region");
+                                System.out.println("3 - Population of a district");
+                                choicepop2 = scanner.nextInt();
+                                scanner.nextLine();
+
+                                switch(choicepop2){
+                                    case 1:
+                                        System.out.println("Please enter the name of the continent you wish to generate a report for: ");
+                                        area = scanner1.nextLine();
+                                        Populace = factory.populationReportMaker(1,"Continent", area);
+                                        show.showPopulation(Populace);
+                                        running = false;
+                                        break;
+                                    case 2:
+                                        System.out.println("Please enter the name of the region you wish to generate a report for: ");
+                                        area = scanner1.nextLine();
+                                        Populace = factory.populationReportMaker(1,"Region", area);
+                                        show.showPopulation(Populace);
+                                        running = false;
+                                        break;
+                                    case 3:
+                                        System.out.println("Please enter the name of the district you wish to generate a report for: ");
+                                        area = scanner1.nextLine();
+                                        Populace = factory.populationReportMaker(1, "placeholder", area);
+                                        show.showPopulation(Populace);
+                                        running = false;
+                                        break;
+
+                                    default:
+                                        System.out.println("Invalid option, please try again.");
+                                        break;
+
+                                }
+                            default:
+                                System.out.println("Invalid option, please try again.");
+                                break;
+
+
                         }
                         break;
                     // Population report case?

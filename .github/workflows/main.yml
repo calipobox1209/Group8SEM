@@ -2,6 +2,23 @@ name: A workflow for the population database
 on: push
 
 jobs:
+  IntegrationTests:
+    name: Integration Tests
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Integration Tests
+        run: |
+          docker build -t database ./db 
+          docker run --name app -dp 33060:3306 database
+          mvn -Dtest=com.napier.sem.AppIntegrationTest test
+          docker stop app
+          docker rm app
+          docker image rm database
   build:
     name: Hello world action
     runs-on: ubuntu-20.04

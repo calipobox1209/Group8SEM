@@ -11,15 +11,15 @@ import static java.lang.Math.random;
 //this is the main app for the population database
 
 public class App {
-    //instantiates country,city,and factory objects that will be used in the class
-    static ReportFactory factory = new ReportFactory();
-    Country country = new Country();
-    City city = new City();
-    population population = new population();
-
 
     //main class, facilitates user data collection via rudimentary UI
     public static void main(String[] args) {
+        //instantiates country,city,and factory objects that will be used in the class
+        ReportFactory factory = new ReportFactory();
+        Country country = new Country();
+        City city = new City();
+        population population = new population();
+
         //showreport object for display of reports to console
         ShowReports show = new ShowReports();
 

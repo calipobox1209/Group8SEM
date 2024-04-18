@@ -1,5 +1,9 @@
 name: A workflow for the population database
-on: push
+on:
+  push:
+    branches:
+      - master
+      - develop
 
 jobs:
   IntegrationTests:
@@ -20,7 +24,7 @@ jobs:
           docker rm app
           docker image rm database
   build:
-    name: Build Pop App Run in Docker and Deploy Release
+    name: Build and Start Using docker-compose
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -36,10 +40,3 @@ jobs:
         run: |
           mvn package -DskipTests
           docker-compose up --abort-on-container-exit
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          automatic_release_tag: "latest"
-          files: |
-            ./target/*.jar

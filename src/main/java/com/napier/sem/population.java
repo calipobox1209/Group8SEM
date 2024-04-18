@@ -27,6 +27,7 @@ public class population {
             pop.population = rset.getString("worldPop");
             populations.add(pop);
         }
+        System.out.println(populations.size());
         return populations;
     }
     catch(Exception e){

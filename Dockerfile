@@ -1,4 +1,4 @@
 FROM openjdk:latest
-COPY ./target/popApplication /tmp
+COPY ./target/Group8seMethods.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "-jar", "popApplication", "db:3306", "10000"]
+ENTRYPOINT ["java", "-jar", "Group8seMethods.jar", "db:3306", "10000"]

@@ -1,5 +1,9 @@
 name: A workflow for the population database
-on: push
+on:
+  push:
+    branches:
+      - master
+      - develop
 
 jobs:
   IntegrationTests:
@@ -35,7 +39,7 @@ jobs:
       - name: Package and Run docker compose
         run: |
           mvn package -DskipTests
-          docker-compose up --abort-on-container-exit
+          docker-compose up
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"

@@ -2,6 +2,7 @@ package com.napier.sem;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+//class for making population reports
 public class population {
     String name;
 
@@ -16,7 +17,7 @@ public class population {
     String ruralPercent;
 
     ConnectionProvider a = ConnectionProvider.getInstance();
-
+    //same as most of the report generation functions, it sends an sql statement and puts the output into an arraylist of populations
     public ArrayList<population> reportPopulationByWorld() {
     try {
         Statement stmt = a.con.createStatement();
@@ -40,10 +41,10 @@ public class population {
         }
         }
 
-    public ArrayList<population> reportSingleCity(String cityName){
+    public ArrayList<population> reportSingleCityPop(String cityName){
         try {
             Statement stmt = a.con.createStatement();
-            String select = "SELECT city.Name, country.Name as CountryName, country.Continent as CountryCont, country.region as CountryRegion, city.Population " +
+            String select = "SELECT city.Name, city.Population " +
                     "FROM city JOIN country ON city.CountryCode = country.Code " +
                     "WHERE city.Name = '" + cityName + "' ";
             ResultSet rset = stmt.executeQuery(select);
@@ -69,7 +70,7 @@ public class population {
         try {
             Statement stmt = a.con.createStatement();
             String select = "SELECT country.Name, country.Population, SUM(city.Population) as CityPop, country.Population - SUM(city.Population) as NonCityPop " +
-                    "FROM country JOIN city on city.CountryCode = country.code " +
+                    "FROM country JOIN city on city.CountryCode = country.Code " +
                     "WHERE country.Name = '" + countryName + "' " +
                     "GROUP BY country.Name, country.Population "  ;
 
@@ -98,7 +99,7 @@ public class population {
         try {
             Statement stmt = a.con.createStatement();
             String select = "SELECT country.Region, SUM(country.Population) as RegionPop " +
-                    "FROM country JOIN city on city.CountryCode = country.code " +
+                    "FROM country JOIN city on city.CountryCode = country.Code " +
                     "WHERE country.Region = '" + regionName + "' " +
                     "GROUP BY country.Region ";
             ResultSet rset = stmt.executeQuery(select);

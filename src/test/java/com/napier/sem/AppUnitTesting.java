@@ -16,7 +16,7 @@ public class AppUnitTesting {
     static ReportFactory report;
 
     static population population;
-
+    //initializes objects before testing
     @BeforeAll
     static void init()
     {
@@ -26,7 +26,7 @@ public class AppUnitTesting {
         report = new ReportFactory();
         population = new population();
     }
-
+    //checking what happens when ShowReports returns null
     @Test
     void testCountryShowNull()
     {
@@ -44,7 +44,7 @@ public class AppUnitTesting {
     {
         show.showPopulation(null);
     }
-
+    //Tests what happens when our produced lists contain null
     @Test
     void testCountryContainNull()
     {
@@ -68,7 +68,7 @@ public class AppUnitTesting {
         populations.add(null);
         show.showPopulation(populations);
     }
-
+    //Checking that ShowCities displays valid data properly
     @Test
     void printCountries()
     {
@@ -106,7 +106,7 @@ public class AppUnitTesting {
         populations.add(c);
         show.showPopulation(populations);
     }
-
+    //Testing what happens when factory class functions take in null values
     @Test
     void testCountryReportMakerNullValueInput()
     {

@@ -57,11 +57,7 @@ public class ShowReports {
                 continue;
             System.out.println(
                     cii.get(i).name + " "
-                            + cii.get(i).population + " "
-                            + cii.get(i).cityPop + " "
-                            + cii.get(i).ruralPop + " "
-                            + cii.get(i).cityPercent + " "
-                            + cii.get(i).ruralPercent);
+                            + cii.get(i).population);
         }
 
     }

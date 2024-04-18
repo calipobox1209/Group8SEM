@@ -105,22 +105,38 @@ public class ReportFactory {
 
             case 1:
                 //since one of the options for area is the entire world, we call our special case if user input is flagged as requesting that
-                if (a == "World")
-                {
-                    populations = populationReport.reportPopulationByWorld();
-                }else {
-                    return null;
-                }
-                break;
-            case 2:
-                //exact sane thinking here as the above if statement
-                populations = populationReport.reportSingleCity(b);
+                populations = populationReport.reportPopulationByWorld();
 
                 break;
-            case 3:
+            case 2:
+
                 //special case for single country
                 populations = populationReport.reportSingleCountry(b);
                 break;
+
+            case 3:
+                //exact sane thinking here as the above if statement
+                populations = populationReport.reportSingleCityPop(b);
+
+                break;
+
+            case 4:
+                //makes single region report
+                populations = populationReport.reportSingleRegion(b);
+
+            break;
+
+            case 5:
+                //makes single district report
+                populations = populationReport.reportSingleDistrict(b);
+
+            break;
+
+            case 6:
+                //makes single continent report
+                populations = populationReport.reportSingleContinent(b);
+
+            break;
         }
         //we pass the retrieved array back to main
         return populations;

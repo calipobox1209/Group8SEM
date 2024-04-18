@@ -10,7 +10,7 @@ import java.util.Objects;
 
 import static java.lang.Integer.parseInt;
 import static org.junit.jupiter.api.Assertions.*;
-
+//class for integration tests
 public class AppIntegrationTest
 {
     static App app;
@@ -21,6 +21,7 @@ public class AppIntegrationTest
     static population pop;
     static ShowReports show;
     static ConnectionProvider a = ConnectionProvider.getInstance();
+    //initializes our objects before running any tests
     @BeforeAll
     static void init()
     {
@@ -33,6 +34,7 @@ public class AppIntegrationTest
         a.connect("localhost:33060", 30000);
     }
 
+    //tests to see if the single country report works
     @Test
     void testGetCountry()
     {
@@ -45,12 +47,15 @@ public class AppIntegrationTest
         assertEquals(country1.get(0).capital, "Abu Dhabi");
     }
 
+    //tests to see if list of country is sorting from highest to lowest population in length and not null
     @Test
     void testCountryList()
     {
         ArrayList<Country> country2 = country.reportNCountriesByWorld(50);
         assertTrue(parseInt(country2.get(0).population) > parseInt(country2.get(49).population));
+        assertNotNull(country2);
     }
+    //tests the single city report maker by verifying its values and checking it isnt empty/null
     @Test
     void testGetCity()
     {
@@ -62,7 +67,7 @@ public class AppIntegrationTest
         assertFalse(city1.isEmpty());
         assertNotNull(city1);
     }
-
+    //tests n cities list is sorted properly, not null or empty
     @Test
     void testGetCityList()
     {
@@ -72,6 +77,7 @@ public class AppIntegrationTest
         assertNotNull(city2);
     }
 
+    //verifies list is correct size, isnt null, and checks random index to verify correct continent
     @Test
     void testcountryReportMaker()
     {
@@ -81,6 +87,7 @@ public class AppIntegrationTest
         assertEquals("Asia", country3.get(16).continent);
     }
 
+    //tests city report maker
     @Test
     void testCityReportMaker()
     {
@@ -90,15 +97,16 @@ public class AppIntegrationTest
         assertEquals("Poland", city.get(12).country);
     }
 
+    //tests that produced list is correct size, contains no null values, and is correct country
     @Test
     void testPopulationReportMaker()
     {
-        ArrayList<population> population = report.populationReportMaker(3, "placeholder", "Albania");
+        ArrayList<population> population = report.populationReportMaker(2, "placeholder", "Albania");
         assertEquals(1, population.size());
         assertNotNull(population);
         assertEquals("Albania", population.get(0).name);
     }
-
+    //same test as before but for world report maker
     @Test
     void testPopulationWorldReportMaker()
     {
@@ -107,16 +115,17 @@ public class AppIntegrationTest
         assertNotNull(population.get(0).population);
     }
 
-
+    //tests population report maker again with different query
     @Test
     void testPopulationCityReportMaker()
     {
-        ArrayList<population> population = report.populationReportMaker(2, "placeholder", "Glasgow");
+        ArrayList<population> population = report.populationReportMaker(3, "placeholder", "Glasgow");
         assertEquals(1, population.size());
         assertNotNull(population);
         assertEquals("Glasgow", population.get(0).name);
     }
 
+    //tests capital city function produces correct list
     @Test
     void capitalCitytester() {
 
@@ -132,7 +141,7 @@ public class AppIntegrationTest
         assertNotNull(population.get(0).population);
     }
 */
-
+    //tests district population report by verifying data and checking for null
     @Test
     void populationSingleDistrict(){
         ArrayList<population> population = pop.reportSingleDistrict("Texas");
@@ -141,7 +150,7 @@ public class AppIntegrationTest
         assertNotNull(population.get(0));
         assertEquals("Texas", population.get(0).name);
     }
-
+    //tests single city population report in same way
     @Test
     void populationSingleRegion(){
         ArrayList<population> population = pop.reportSingleRegion("Eastern Europe");
@@ -150,7 +159,7 @@ public class AppIntegrationTest
         assertEquals("Eastern Europe", population.get(0).name);
 
     }
-
+    //checks continent test in same way
     @Test
     void populationSingleContinent(){
         ArrayList<population> population = pop.reportSingleContinent("Africa");

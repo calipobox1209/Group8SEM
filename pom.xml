@@ -60,7 +60,8 @@
                     <finalName>Group8seMethods</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>App</mainClass>
+                            <addClassPath>true</addClassPath>
+                            <mainClass>com.napier.sem.App</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

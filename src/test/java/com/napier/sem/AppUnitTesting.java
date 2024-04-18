@@ -103,9 +103,6 @@ public class AppUnitTesting {
         ArrayList<population> populations = new ArrayList<population>();
         population c = new population();
         c.population = "2900";
-        c.countryName = "Test";
-        c.continent = "Test";
-        c.region = "Test";
         populations.add(c);
         show.showPopulation(populations);
     }

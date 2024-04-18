@@ -18,7 +18,7 @@ public class AppIntegrationTest
     static Country country;
     static ReportFactory report;
 
-    static population population;
+    static population pop;
     static ShowReports show;
     static ConnectionProvider a = ConnectionProvider.getInstance();
     @BeforeAll
@@ -27,7 +27,7 @@ public class AppIntegrationTest
         app = new App();
         city = new City();
         country = new Country();
-        population = new population();
+        pop = new population();
         report = new ReportFactory();
         show = new ShowReports();
         a.connect("localhost:33060", 30000);
@@ -96,16 +96,15 @@ public class AppIntegrationTest
         ArrayList<population> population = report.populationReportMaker(3, "placeholder", "Albania");
         assertEquals(1, population.size());
         assertNotNull(population);
-        assertEquals("Albania", population.get(0).countryName);
+        assertEquals("Albania", population.get(0).name);
     }
 
     @Test
     void testPopulationWorldReportMaker()
     {
         ArrayList<population> population = report.populationReportMaker(1, "World", "Placeholder");
-        assertEquals(239, population.size());
-        assertNotNull(population);
-        assertEquals("Albania", population.get(4).countryName);
+        assertEquals(1, population.size());
+        assertNotNull(population.get(0).population);
     }
 
 
@@ -115,7 +114,7 @@ public class AppIntegrationTest
         ArrayList<population> population = report.populationReportMaker(2, "placeholder", "Glasgow");
         assertEquals(1, population.size());
         assertNotNull(population);
-        assertEquals("United Kingdom", population.get(0).countryName);
+        assertEquals("Glasgow", population.get(0).name);
     }
 
     @Test
@@ -127,4 +126,37 @@ public class AppIntegrationTest
     assertNotNull(city2);
     }
 
+/*    @Test
+    void areaPercentagePopTest(){
+        ArrayList<population> population = pop.reportPercentagePop("Continent", "Asia");
+        assertNotNull(population.get(0).population);
+    }
+*/
+
+    @Test
+    void populationSingleDistrict(){
+        ArrayList<population> population = pop.reportSingleDistrict("Texas");
+        assertEquals(9208281, Integer.parseInt(population.get(0).population));
+        assertFalse(population.isEmpty());
+        assertNotNull(population.get(0));
+        assertEquals("Texas", population.get(0).name);
+    }
+
+    @Test
+    void populationSingleRegion(){
+        ArrayList<population> population = pop.reportSingleRegion("Eastern Europe");
+        assertFalse(population.isEmpty());
+        assertNotNull(population.get(0));
+        assertEquals("Eastern Europe", population.get(0).name);
+
+    }
+
+    @Test
+    void populationSingleContinent(){
+        ArrayList<population> population = pop.reportSingleContinent("Africa");
+        assertEquals(784475000, Integer.parseInt(population.get(0).population));
+        assertFalse(population.isEmpty());
+        assertNotNull(population.get(0));
+        assertEquals("Africa", population.get(0).name);
+    }
 }

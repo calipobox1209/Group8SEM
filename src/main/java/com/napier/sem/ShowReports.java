@@ -56,10 +56,12 @@ public class ShowReports {
             if (cii.get(i) == null)
                 continue;
             System.out.println(
-                    cii.get(i).countryName + " "
-                            + cii.get(i).region + " "
-                            + cii.get(i).continent + " "
-                            + cii.get(i).population);
+                    cii.get(i).name + " "
+                            + cii.get(i).population + " "
+                            + cii.get(i).cityPop + " "
+                            + cii.get(i).ruralPop + " "
+                            + cii.get(i).cityPercent + " "
+                            + cii.get(i).ruralPercent);
         }
 
     }

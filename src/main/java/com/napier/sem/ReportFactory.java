@@ -109,7 +109,6 @@ public class ReportFactory {
                 {
                     populations = populationReport.reportPopulationByWorld();
                 }else {
-                    populations = populationReport.reportPopulationByArea(a, b);
                     return null;
                 }
                 break;

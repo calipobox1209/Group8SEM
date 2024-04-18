@@ -3,6 +3,7 @@ package com.napier.sem;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.*;
 
 import static java.lang.Math.random;
 
@@ -19,6 +20,7 @@ public class App {
         Country country = new Country();
         City city = new City();
         population population = new population();
+        ExecutorService ex = Executors.newSingleThreadExecutor();
 
         //showreport object for display of reports to console
         ShowReports show = new ShowReports();
@@ -66,9 +68,18 @@ public class App {
                 System.out.println("0 - Exit");
 
                 System.out.print("Enter your choice: ");
-                // Adding nextLine() to consume the rest of the line after the nextInt()
 
-                int choice = scanner.nextInt();
+                // Adding nextLine() to consume the rest of the line after the nextInt()|
+                Future<Integer> future = (Future<Integer>) ex.submit(() -> {
+                    int choice = scanner.nextInt();
+                });
+
+                try {
+                    int choice = future.get(10, TimeUnit.SECONDS);
+
+
+
+
                 scanner.nextLine(); // Consume newline
                 // This switch is responsible for determining which type of report to create i.e Country or City
                 switch (choice) {
@@ -501,6 +512,10 @@ public class App {
                     //if the user enters an invalid input they get asked to retry
                     default:
                         System.out.println("Invalid option, please try again.");
+                }
+                } catch (TimeoutException | InterruptedException | ExecutionException e) {
+                    System.out.println("Bye");
+                    System.exit(0);
                 }
             }
 

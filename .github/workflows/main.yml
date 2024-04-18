@@ -2,6 +2,8 @@
 name: A workflow for the population database
 on:
   push:
+    branches:
+      - main
 
 jobs:
 

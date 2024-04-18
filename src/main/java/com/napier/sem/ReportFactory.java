@@ -21,6 +21,11 @@ public class ReportFactory {
     //functions that specify list length, a string "a" denoting the area type for area sensitive functions, and finally a string b for area name
     public ArrayList<Country> countryReportMaker(int query, int n, String a, String b)
     {
+        if (a == null || b == null)
+        {
+            System.out.println("Not enough data supplied");
+            return null;
+        }
         switch (query) {
 
             case 1:
@@ -53,6 +58,12 @@ public class ReportFactory {
     //this is the function that handles city related reports, same intake and ideas associated as above function
     public ArrayList<City> cityReportMaker(int query, int n, String a, String b, boolean capital)
     {
+        if (a == null || b == null)
+        {
+            System.out.println("Not enough data supplied");
+            return null;
+        }
+
         switch (query) {
             case 1:
                 //world special case
@@ -83,6 +94,13 @@ public class ReportFactory {
 
     public ArrayList<population> populationReportMaker(int query, String a, String b)
     {
+
+        if (a == null || b == null)
+        {
+            System.out.println("Not enough data supplied");
+            return null;
+        }
+
         switch (query) {
 
             case 1:

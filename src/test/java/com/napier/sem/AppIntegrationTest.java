@@ -109,7 +109,7 @@ public class AppIntegrationTest
     }
 
 
-@Test
+    @Test
     void testPopulationCityReportMaker()
     {
         ArrayList<population> population = report.populationReportMaker(2, "placeholder", "Glasgow");
@@ -118,13 +118,13 @@ public class AppIntegrationTest
         assertEquals("United Kingdom", population.get(0).countryName);
     }
 
-@Test
-void capitalCitytester() {
+    @Test
+    void capitalCitytester() {
 
     ArrayList<City> city2 = city.reportNCitiesByWorld(50, true);
     assertTrue(parseInt(city2.get(0).population) > parseInt(city2.get(49).population));
     assertFalse(city2.isEmpty());
     assertNotNull(city2);
-}
+    }
 
 }

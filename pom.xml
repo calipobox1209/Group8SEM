@@ -8,6 +8,8 @@
     <artifactId>Group8seMethods</artifactId>
     <version>0.1.0.2</version>
 
+
+
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -55,7 +57,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
-                    <finalName>popApplication</finalName>
+                    <finalName>Group8seMethods</finalName>
                     <archive>
                         <manifest>
                             <mainClass>com.napier.sem.App</mainClass>

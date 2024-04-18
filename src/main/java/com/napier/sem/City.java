@@ -213,6 +213,7 @@ public class City {
 
     public ArrayList<City> reportSingleCity(String cityName, boolean capital) {
         try {
+
             if(capital == false) {
                 Statement stmt = a.con.createStatement();
                 // SQL query to select a single city by name

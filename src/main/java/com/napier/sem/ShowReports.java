@@ -29,4 +29,17 @@ public class ShowReports {
         }
 
     }
+
+    public void showPopulation(ArrayList<population> cii){
+        //goes through entire arraylist and outputs name,country,district,and population
+        for(int i = 0; i < cii.size(); i++ )
+        {
+            System.out.println(
+                    cii.get(i).countryName + " "
+                            + cii.get(i).region + " "
+                            + cii.get(i).continent + " "
+                            + cii.get(i).population);
+        }
+
+    }
 }

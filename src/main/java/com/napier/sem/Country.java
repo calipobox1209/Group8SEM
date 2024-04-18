@@ -19,10 +19,11 @@ public class Country {
                 try {
                     Statement stmt = a.con.createStatement();
                     //sql statement that injects user input from main in order to specify results
-                    String select = "SELECT Code, Name, Continent, Region, Population, Capital " +
+                    String select = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as CapitalName " +
                             "FROM country " +
-                            "WHERE " + area + " = " + "'" + areaName + "' " +
-                            "ORDER BY Population DESC ";
+                            "INNER JOIN city ON country.Capital = city.ID " +
+                            "WHERE " + "country." + area + " = " + "'" + areaName + "' " +
+                            "ORDER BY country.Population DESC ";
                     ResultSet rset = stmt.executeQuery(select);
                     //creates country objects and populates countries arraylist
                     ArrayList<Country> countries = new ArrayList<Country>();
@@ -33,7 +34,7 @@ public class Country {
                         country.continent = rset.getString("country.Continent");
                         country.region = rset.getString("country.Region");
                         country.population = rset.getString("country.Population");
-                        country.capital = rset.getString("country.capital");
+                        country.capital = rset.getString("CapitalName");
                         countries.add(country);
                     }//returns arraylist to factory class
                     return countries;
@@ -51,9 +52,10 @@ public class Country {
         try {
             Statement stmt = a.con.createStatement();
             //trimmed down version of all countries by area statement
-            String select = "SELECT Code, Name, Continent, Region, Population, Capital " +
+            String select = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name AS CapitalName " +
                     "FROM country " +
-                    "ORDER BY Population DESC ";
+                    "INNER JOIN city ON country.Capital = city.ID " +
+                    "ORDER BY country.Population DESC ";
             ResultSet rset = stmt.executeQuery(select);
             //creates countries, populates arraylist
             ArrayList<Country> countries = new ArrayList<Country>();
@@ -64,7 +66,7 @@ public class Country {
                 country.continent = rset.getString("country.Continent");
                 country.region = rset.getString("country.Region");
                 country.population = rset.getString("country.Population");
-                country.capital = rset.getString("country.capital");
+                country.capital = rset.getString("CapitalName");
                 countries.add(country);
             }
             return countries;
@@ -84,10 +86,11 @@ public class Country {
             try {
                 Statement stmt = a.con.createStatement();
                 //sql with user input injection
-                String select = "SELECT Code, Name, Continent, Region, Population, Capital " +
+                String select = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name AS capitalName " +
                         "FROM country " +
-                        "WHERE " + area + " = '" + areaName + "' " +
-                        "ORDER BY Population DESC LIMIT " + N;
+                        "INNER JOIN city ON country.Capital = city.ID " +
+                        "WHERE " + "country." + area + " = " + "'" + areaName + "' " +
+                        "ORDER BY country.Population DESC LIMIT " + N;
 
                 ResultSet rset = stmt.executeQuery(select);
                 //make countries, fill array
@@ -99,7 +102,7 @@ public class Country {
                     country.continent = rset.getString("Continent");
                     country.region = rset.getString("Region");
                     country.population = rset.getString("Population");
-                    country.capital = rset.getString("country.capital");
+                    country.capital = rset.getString("capitalName");
                     countries.add(country);
                 }
                 return countries;
@@ -116,8 +119,9 @@ public class Country {
         try {
             Statement stmt = a.con.createStatement();
             //trimmed down version of report n countries by area statment
-            String select = "SELECT Code, Name, Continent, Region, Population, Capital " +
+            String select = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as CapitalName " +
                     "FROM country " +
+                    "INNER JOIN city ON country.Capital = city.ID " +
                     "ORDER BY Population DESC LIMIT " + N;
 
             ResultSet rset = stmt.executeQuery(select);
@@ -130,7 +134,7 @@ public class Country {
                 country.continent = rset.getString("Continent");
                 country.region = rset.getString("Region");
                 country.population = rset.getString("Population");
-                country.capital = rset.getString("country.capital");
+                country.capital = rset.getString("CapitalName");
                 countries.add(country);
             }
             return countries;
@@ -146,8 +150,9 @@ public class Country {
         try {
             Statement stmt = a.con.createStatement();
             // SQL query to select a single country by its name
-            String select = "SELECT Code, Name, Continent, Region, Population, Capital " +
+            String select = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name as CapitalName " +
                     "FROM country " +
+                    "INNER JOIN city ON country.Capital = city.ID " +
                     "WHERE country.Name = '" + countryName + "'";
 
             ResultSet rset = stmt.executeQuery(select);
@@ -160,7 +165,7 @@ public class Country {
                 country.continent = rset.getString("Continent");
                 country.region = rset.getString("Region");
                 country.population = rset.getString("Population");
-                country.capital = rset.getString("country.capital");
+                country.capital = rset.getString("CapitalName");
                 countries.add(country);
             }
             return countries;

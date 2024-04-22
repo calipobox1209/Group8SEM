@@ -38,10 +38,10 @@ COMPLETED OBJECTIVES 28/32
 | 24 | The population of people, people living in cities, and people not living in cities in each region | YES | ![24](https://github.com/calipobox1209/Group8SEM/assets/159350145/0ae0e4a9-d749-439f-ac89-302984a5fa22)|
 | 25 | The population of people, people living in cities, and people not living in cities in each country | YES | ![25](https://github.com/calipobox1209/Group8SEM/assets/159350145/40fa8bff-2baf-4258-a99e-545fb6bf9e43)|
 | 26 | The population of the world | YES           |    ![26](https://github.com/calipobox1209/Group8SEM/assets/159350145/9c1ca30a-9c4a-4e1a-8920-e9e870d8e3a2)|
-| 27 | The population of a continent | YES           |    |
+| 27 | The population of a continent | NO           |    |
 | 28 | The population of a region | YES           |    ![28](https://github.com/calipobox1209/Group8SEM/assets/159350145/4049cfef-ad6d-4058-bfc3-00a6fee50823)|
-| 29 | The population of a country | YES           |            |
+| 29 | The population of a country | NO           |            |
 | 30 | The population of a district | YES           |  ![30](https://github.com/calipobox1209/Group8SEM/assets/159350145/2cfb59ac-72f0-4c93-8960-7156f9792537)|
-| 31 | The population of a city | YES           |            |
+| 31 | The population of a city | NO           |            |
 | 32 | The number of people who speak Chinese, English, Hindi, Spanish or Arabic from greatest number to smallest | NO |  |
 

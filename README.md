@@ -12,7 +12,7 @@ COMPLETED OBJECTIVES 31/32
 
 | ID | OBJECTIVE                                                               | OBJECTIVE MET | SCREENSHOT |
 |----|-------------------------------------------------------------------------|:-------------:|:----------:|
-| 1  | All the countries in the world organised by largest population to smallest | YES         |   ![Screenshot 2023-12-05 001427] |
+| 1  | All the countries in the world organised by largest population to smallest | YES         |  ![Screenshot 2023-12-10 210033](https://github.com/calipobox1209/Group8SEM/assets/118551311/869cb149-9428-4a31-9ca1-3a1f761db689)|
 | 2  | All the countries in a continent organised by largest population to smallest | YES         |            |
 | 3  | All the countries in a region organised by largest population to smallest | YES           |            |
 | 4  | The top N populated countries in the world where N is provided by the user | YES           |            |

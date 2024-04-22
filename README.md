@@ -8,6 +8,8 @@ License [![LICENSE](https://img.shields.io/github/license/calipobox1209/group9se
 
 Release [![Releases](https://img.shields.io/github/release/calipobox1209/group9sem/all.svg?style=flat-square)](https://github.com/calipobox1209/group8sem/releases)
 
+COMPLETED OBJECTIVES 31/32
+
 | ID | OBJECTIVE                                                               | OBJECTIVE MET | SCREENSHOT |
 |----|-------------------------------------------------------------------------|:-------------:|:----------:|
 | 1  | All the countries in the world organised by largest population to smallest | YES         |            |
@@ -41,5 +43,5 @@ Release [![Releases](https://img.shields.io/github/release/calipobox1209/group9s
 | 29 | The population of a country | YES           |            |
 | 30 | The population of a district | YES           |            |
 | 31 | The population of a city | YES           |            |
-| 32 | The number of people who speak Chinese, English, Hindi, Spanish or Arabic from greatest number to smallest | YES |  |
+| 32 | The number of people who speak Chinese, English, Hindi, Spanish or Arabic from greatest number to smallest | NO |  |
 
